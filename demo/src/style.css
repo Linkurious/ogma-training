@@ -7,3 +7,16 @@
 body {
   overflow: hidden;
 }
+
+p {
+  font-family: "icon-font", Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "icon-font";
+  src: url("static/webfont.eot");
+  src: url("static/webfont.eot?#iefix") format("embedded-opentype"),
+    url("static/webfont.woff") format("woff"),
+    url("static/webfont.ttf") format("truetype"),
+    url("static/webfont.svg#webfont") format("svg");
+}
