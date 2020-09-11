@@ -35,7 +35,7 @@ session
 
 /**
  * Now we want to style the graph, make it look pretty and readable.
- * Let's start by edges, we want to make them bigger as the volume
+ * Let's start bynodees, we want to make them bigger as the volume
  * of exchange they represent grows.
  */
 
@@ -83,7 +83,6 @@ ogma.styles.addRule({
   // Edges style:
   edgeAttributes: function (edge) {
     const quantity = edge.getData("neo4jProperties.quantity");
-    //   if (!quantity) return slices[0][1];
     const [, color, width] = quantity
       ? edgeSlices.find(([threshold]) => quantity > threshold)
       : slices[0];
@@ -131,17 +130,63 @@ ogma.styles.addRule({
  * We will need to compute the data contained in the generated grouped edges.
  *
  */
+function groupEdges(edges) {
+  return {
+    data: {
+      neo4jProperties: {
+        quantity: edges.reduce(
+          (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+          0
+        ),
+      },
+    },
+  };
+}
+
 const edgeGrouping = ogma.transformations.addEdgeGrouping({
   enabled: false,
   selector: function (edge) {
     return edge.getData("neo4jType") === "DELIVER";
   },
-  generator(edges) {
+  enabled: false,
+  generator: (edges) => groupEdges(edges),
+});
+
+document.getElementById("edge-grouping").addEventListener("click", () => {
+  edgeGrouping.toggle().then(() => ogma.layouts.force());
+});
+
+/**
+ *  Now the graph is clearer but we could still generate a view of the graph that
+ *  shows better how the production line is structured.
+ *  Let's group all nodes of the same type together and display the graph as a
+ *  sequence
+ */
+const nodeGrouping = ogma.transformations.addNodeGrouping({
+  groupIdFunction: function (node) {
+    return node.getData("neo4jLabels")[0];
+  },
+  selector: function (node) {
+    return node.getData("neo4jLabels")[0] !== "Product";
+  },
+  enabled: false,
+  edgeGenerator: (edges) => groupEdges(edges),
+  nodeGenerator(nodes, groupId) {
     return {
       data: {
+        neo4jLabels:
+          groupId === "SupplierA"
+            ? ["FrameSupplier"]
+            : groupId === "SupplierB"
+            ? ["WheelSupplier"]
+            : ["RawSupplierB", "RawSupplierA"].find((name) => name === groupId)
+            ? ["AllRawsuppliers"]
+            : groupId === "Retailer"
+            ? ["Allretailers"]
+            : ["AllWholesalers"],
         neo4jProperties: {
-          quantity: edges.reduce(
-            (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+          quantity: nodes.reduce(
+            (total, node) => total + node.getData("neo4jProperties.quantity"),
             0
           ),
         },
@@ -150,6 +195,16 @@ const edgeGrouping = ogma.transformations.addEdgeGrouping({
   },
 });
 
-document.getElementById("edge-grouping").addEventListener("click", () => {
-  edgeGrouping.toggle();
+document.getElementById("node-grouping").addEventListener("click", () => {
+  nodeGrouping.toggle().then(() => {
+    if (nodeGrouping.isEnabled()) {
+      ogma.layouts.hierarchical({
+        componentDistance: 500,
+        nodeDistance: 100,
+        levelDistance: 80,
+      });
+    } else {
+      ogma.layouts.force();
+    }
+  });
 });
