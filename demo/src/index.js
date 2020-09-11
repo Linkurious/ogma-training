@@ -125,3 +125,31 @@ ogma.styles.addRule({
     };
   },
 });
+
+/**
+ * Next let's make the graph more readable by collapsing edges which have the same semantic
+ * We will need to compute the data contained in the generated grouped edges.
+ *
+ */
+const edgeGrouping = ogma.transformations.addEdgeGrouping({
+  enabled: false,
+  selector: function (edge) {
+    return edge.getData("neo4jType") === "DELIVER";
+  },
+  generator(edges) {
+    return {
+      data: {
+        neo4jProperties: {
+          quantity: edges.reduce(
+            (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+            0
+          ),
+        },
+      },
+    };
+  },
+});
+
+document.getElementById("edge-grouping").addEventListener("click", () => {
+  edgeGrouping.toggle();
+});
