@@ -15,7 +15,13 @@ p {
 #controls {
   position: absolute;
   top: 0;
-  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: max-content;
+}
+#controls > button {
+  margin: 10px 0px;
+  padding: 0;
 }
 
 @font-face {

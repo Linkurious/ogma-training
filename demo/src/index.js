@@ -35,12 +35,7 @@ session
 
 // Helper function to get the type of a Node
 function getNodeType(node) {
-  const name = node.getData("neo4jProperties.name");
-  if (name.includes("RawSupplier")) return "rawsupplier";
-  if (name.includes("Supplier")) return "supplier";
-  if (name.includes("Wholesaler")) return "wholesaler";
-  if (name.includes("Product")) return "product";
-  if (name.includes("Retailer")) return "retailer";
+  return node.getData("neo4jLabels")[0];
 }
 
 // Helper function to check if a node should pulse
@@ -66,18 +61,19 @@ const edgeSlices = [
 ];
 
 const nodeSlices = [
-  ["rawsupplier", "#3DCB8D", "\uEA03"],
-  ["supplier", "#6FC1A7", "\uEA04"],
-  ["wholesaler", "#E77152", "\uEA09"],
-  ["retailer", "#9AD0D0", "\uEA06"],
-  ["product", "#76378A", "\uEA02"],
+  [/^Supplier.*/, "#6FC1A7", "\uEA04"],
+  [/RawSupplier/, "#3DCB8D", "\uEA03"],
+  [/FrameSupplier/, "#6FC1A7", "\uEA05"],
+  [/WheelSupplier/, "#6FC1A7", "\uEA08"],
+  [/Wholesaler/, "#E77152", "\uEA09"],
+  [/Retailer/, "#9AD0D0", "\uEA06"],
+  [/Product/, "#76378A", "\uEA02"],
 ];
 
 ogma.styles.addRule({
   // Edges style:
   edgeAttributes: function (edge) {
     const quantity = edge.getData("neo4jProperties.quantity");
-    //   if (!quantity) return slices[0][1];
     const [, color, width] = quantity
       ? edgeSlices.find(([threshold]) => quantity > threshold)
       : edgeSlices[0];
@@ -89,11 +85,11 @@ ogma.styles.addRule({
       width,
     };
   },
-  // Node style:
+  //   // Node style:
   nodeAttributes: function (node) {
     const type = getNodeType(node);
     const [, color, icon] =
-      nodeSlices.find(([sliceType]) => sliceType === type) || nodeSlices[0];
+      nodeSlices.find(([sliceType]) => type.match(sliceType)) || nodeSlices[0];
     return {
       icon: {
         font: "icon-font",
@@ -102,7 +98,7 @@ ogma.styles.addRule({
       },
       // define colors depending on the type of the node
       color,
-      // nodes size depend on the quantity of product that is exanged through them
+      // nodes size depend on the quantity of Product that is exanged through them
       radius:
         node
           .getAdjacentEdges()
@@ -121,18 +117,48 @@ ogma.styles.addRule({
   },
 });
 
+function groupEdges(edges) {
+  return {
+    data: {
+      neo4jProperties: {
+        quantity: edges.reduce(
+          (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+          0
+        ),
+      },
+    },
+  };
+}
+
 const edgeGrouping = ogma.transformations.addEdgeGrouping({
   selector: function (edge) {
     return edge.getData("neo4jType") === "DELIVER";
   },
   enabled: false,
-  generator(edges) {
+  generator: (edges) => groupEdges(edges),
+});
+
+document.getElementById("edge-grouping").addEventListener("click", () => {
+  edgeGrouping.toggle().then(() => ogma.layouts.force());
+});
+
+const nodeGrouping = ogma.transformations.addNodeGrouping({
+  groupIdFunction: function (node) {
+    return node.getData("neo4jLabels")[0];
+  },
+  selector: function (node) {
+    return node.getData("neo4jLabels")[0].match(/^Supplier.*/);
+  },
+  enabled: false,
+  edgeGenerator: (edges) => groupEdges(edges),
+  nodeGenerator(nodes, groupId) {
     return {
-      // id: edges.map((edge) => edge.getId()).join("-"),
       data: {
+        neo4jLabels:
+          groupId === "SupplierA" ? ["FrameSupplier"] : ["WheelSupplier"],
         neo4jProperties: {
-          quantity: edges.reduce(
-            (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+          quantity: nodes.reduce(
+            (total, node) => total + node.getData("neo4jProperties.quantity"),
             0
           ),
         },
@@ -141,24 +167,6 @@ const edgeGrouping = ogma.transformations.addEdgeGrouping({
   },
 });
 
-document.getElementById("edge-grouping").addEventListener("click", () => {
-  edgeGrouping.toggle();
+document.getElementById("node-grouping").addEventListener("click", () => {
+  nodeGrouping.toggle().then(() => ogma.layouts.force());
 });
-
-// var transformation = ogma.transformations.addNeighborsGeneration({
-//   selector: function (node) {
-//     return node.getData("neo4jLabels")[0] === "Product";
-//   },
-//   neighborIdFunction: function (node) {
-//     return node.getData("country");
-//   },
-//   nodeGenerator: function (nodes, countryName) {
-//     return {
-//       data: {
-//         type: "country",
-//         name: countryName,
-//         population: nodes.size,
-//       },
-//     };
-//   },
-// });
