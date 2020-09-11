@@ -32,3 +32,36 @@ session
   .catch((error) => {
     console.error(error);
   });
+
+/**
+ * Now we want to style the graph, make it look pretty and readable.
+ * Let's start by edges, we want to make them bigger as the volume
+ * of exchange they represent grows.
+ */
+
+// Define buckets of importance for edges
+const edgeSlices = [
+  // [volume, color, size]
+  [280, "#444", 3.5],
+  [150, "#777", 2],
+  [15, "#AAA", 1.5],
+  [0, "#DDD", 0.5],
+];
+
+// Define edge rule:
+ogma.styles.addRule({
+  edgeAttributes: function (edge) {
+    //
+    const quantity = edge.getData("neo4jProperties.quantity");
+    const [, color, width] = edgeSlices.find(
+      ([threshold]) => quantity > threshold
+    );
+    return {
+      shape: {
+        head: "arrow",
+      },
+      color,
+      width,
+    };
+  },
+});
