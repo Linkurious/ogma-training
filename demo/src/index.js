@@ -62,11 +62,11 @@ const edgeSlices = [
 
 const nodeSlices = [
   [/^Supplier.*/, "#6FC1A7", "\uEA04"],
-  [/RawSupplier/, "#3DCB8D", "\uEA03"],
+  [/RawSupplier|AllRawsuppliers/, "#3DCB8D", "\uEA03"],
   [/FrameSupplier/, "#6FC1A7", "\uEA05"],
   [/WheelSupplier/, "#6FC1A7", "\uEA08"],
-  [/Wholesaler/, "#E77152", "\uEA09"],
-  [/Retailer/, "#9AD0D0", "\uEA06"],
+  [/Wholesaler|AllWholesalers/, "#E77152", "\uEA09"],
+  [/Retailer|Allretailers/, "#9AD0D0", "\uEA06"],
   [/Product/, "#76378A", "\uEA02"],
 ];
 
@@ -147,15 +147,24 @@ const nodeGrouping = ogma.transformations.addNodeGrouping({
     return node.getData("neo4jLabels")[0];
   },
   selector: function (node) {
-    return node.getData("neo4jLabels")[0].match(/^Supplier.*/);
+    return node.getData("neo4jLabels")[0] !== "Product";
   },
   enabled: false,
   edgeGenerator: (edges) => groupEdges(edges),
   nodeGenerator(nodes, groupId) {
+    console.log("groupId", groupId);
     return {
       data: {
         neo4jLabels:
-          groupId === "SupplierA" ? ["FrameSupplier"] : ["WheelSupplier"],
+          groupId === "SupplierA"
+            ? ["FrameSupplier"]
+            : groupId === "SupplierB"
+            ? ["WheelSupplier"]
+            : ["RawSupplierB", "RawSupplierA"].find((name) => name === groupId)
+            ? ["AllRawsuppliers"]
+            : groupId === "Retailer"
+            ? ["Allretailers"]
+            : ["AllWholesalers"],
         neo4jProperties: {
           quantity: nodes.reduce(
             (total, node) => total + node.getData("neo4jProperties.quantity"),
@@ -168,5 +177,15 @@ const nodeGrouping = ogma.transformations.addNodeGrouping({
 });
 
 document.getElementById("node-grouping").addEventListener("click", () => {
-  nodeGrouping.toggle().then(() => ogma.layouts.force());
+  nodeGrouping.toggle().then(() => {
+    if (nodeGrouping.isEnabled()) {
+      ogma.layouts.hierarchical({
+        componentDistance: 500,
+        nodeDistance: 100,
+        levelDistance: 80,
+      });
+    } else {
+      ogma.layouts.force();
+    }
+  });
 });
