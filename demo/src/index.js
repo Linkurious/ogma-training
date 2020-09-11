@@ -62,6 +62,23 @@ const nodeSlices = [
   [/Product/, "#76378A", "\uEA02"],
 ];
 
+/**
+ * Now let's use styles to alert user when a problem is detected in the supply chain
+ * We will make node to pulse if the total demand they receive is higher than their stock
+ *
+ * */
+function shouldPulse(node) {
+  const totalDemand = node
+    .getAdjacentEdges()
+    .filter((edge) => edge.getSource() === node)
+    .reduce(
+      (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+      0
+    );
+
+  return node.getData("neo4jProperties.stock") - totalDemand < 100;
+}
+
 ogma.styles.addRule({
   // Edges style:
   edgeAttributes: function (edge) {
@@ -98,6 +115,13 @@ ogma.styles.addRule({
           300 +
         5,
       color,
+      pulse: {
+        enabled: shouldPulse(node),
+        endRatio: 1.5,
+        width: 4,
+        interval: 600,
+        startRatio: 1.0,
+      },
     };
   },
 });
