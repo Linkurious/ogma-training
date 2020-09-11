@@ -80,7 +80,7 @@ ogma.styles.addRule({
     //   if (!quantity) return slices[0][1];
     const [, color, width] = quantity
       ? edgeSlices.find(([threshold]) => quantity > threshold)
-      : slices[0];
+      : edgeSlices[0];
     return {
       shape: {
         head: "arrow",
@@ -120,3 +120,45 @@ ogma.styles.addRule({
     };
   },
 });
+
+const edgeGrouping = ogma.transformations.addEdgeGrouping({
+  selector: function (edge) {
+    return edge.getData("neo4jType") === "DELIVER";
+  },
+  enabled: false,
+  generator(edges) {
+    return {
+      // id: edges.map((edge) => edge.getId()).join("-"),
+      data: {
+        neo4jProperties: {
+          quantity: edges.reduce(
+            (total, edge) => total + edge.getData("neo4jProperties.quantity"),
+            0
+          ),
+        },
+      },
+    };
+  },
+});
+
+document.getElementById("edge-grouping").addEventListener("click", () => {
+  edgeGrouping.toggle();
+});
+
+// var transformation = ogma.transformations.addNeighborsGeneration({
+//   selector: function (node) {
+//     return node.getData("neo4jLabels")[0] === "Product";
+//   },
+//   neighborIdFunction: function (node) {
+//     return node.getData("country");
+//   },
+//   nodeGenerator: function (nodes, countryName) {
+//     return {
+//       data: {
+//         type: "country",
+//         name: countryName,
+//         population: nodes.size,
+//       },
+//     };
+//   },
+// });
