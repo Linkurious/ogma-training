@@ -1,0 +1,9 @@
+#app {
+  width: 99vw;
+  height: 99vh;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: hidden;
+}
