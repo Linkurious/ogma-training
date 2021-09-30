@@ -18,3 +18,11 @@ html {
 .reveal section .logo {
   border: 0;
 }
+
+ol>li.simple{
+  list-style: none;
+}
+.r-stack > img{
+  width: 100%;
+  height: auto;
+}

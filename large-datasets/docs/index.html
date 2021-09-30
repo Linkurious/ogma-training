@@ -3,18 +3,15 @@
 
 <head>
   <link rel="shortcut icon" href="images/favicon.ico">
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/js/reveal.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/plugin/highlight/highlight.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/plugin.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reset.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.css" />
   <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/reset.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/theme/black.min.css" />
   <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/reveal.min.css" />
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/theme/black.css" />
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/lib/css/monokai.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/monokai.min.css" />
   <link type="text/css" rel="stylesheet" href="styles.css" />
 </head>
 
@@ -37,688 +34,61 @@
           </ol>
         </section>
         <section data-background-image="images/background.png">
-          <section>
-            <p style="font-size: 1.75em;">Exploration</p>
-            <img src="images/small-expand.gif" />
-          </section>
+          <p style="font-size: 1.75em;">Exploration</p>
+          <div class="r-stack">
+            <img class="fragment fade-out" data-fragment-index="0" src="images/small-expand.gif" width="450"
+              height="300">
+            <img class="fragment current-visible" data-fragment-index="0" src="images/large-expand.gif" width="300"
+              height="450">
+          </div>
         </section>
         <section data-background-image="images/background.png">
-          <section>
-            <p style="font-size: 1.75em;">Exploration</p>
-            <img src="images/large-expand.gif" />
-          </section>
-        </section>
-      </section>
-      
-      <!-- Intro, features, examples -->
-
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>Introduction</h2>
-        </section>
-
-        <section>
-          <p>Les bonnes questions</p>
-          <img src="images/example-0.png"
-            style="border: 0; width: 35%; display: inline-block; margin: auto; vertical-align: middle;" />
-          <ul>
-            <li>Que veux-je voir dans mon Dataset</li>
-            <li>Ais-je besoin de charger toutes mes donness</li>
-            <li>Quel est le plus gros graph qu'un utilisateur veut/peut voir ?</li>
+          <p style="font-size: 1.75em;">L'exploration requiers</p>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Des requetes ciblées</li>
+            <li class="fragment fade-in">Possibilité d'étendre les noeuds</li>
+            <li class="fragment fade-in">TODO</li>
           </ul>
         </section>
       </section>
-
       <section data-background-image="images/background.png">
         <section>
-          <h2>Features:</h2>
+          <p style="font-size: 1.75em;">Les problèmes</p>
+          <ol>
+            <li class="fragment fade-in">Chargement</li>
+            <li class="fragment fade-in">Affichage</li>
+            <li class="fragment fade-in">Layout</li>
+            <li class="fragment fade-in">Styles</li>
+          </ol>
         </section>
         <section>
-          <h2>Features:</h2>
-          <p>Visualisation styling</p>
-          <iframe height="500" width="800"
-            src="http://localhost:8000/editor-embed#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"></iframe>
+          <h2>Chargment</h2>
         </section>
         <section>
-          <h2>Features:</h2>
-          <p>Layouts</p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/layout-force.html"></iframe>
-        </section>
-        <section>
-          <h2>Features:</h2>
-          <p>Layouts</p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/layout-hierarchical-custom-root.html"></iframe>
-        </section>
-        <section>
-          <h2>Features:</h2>
-          <p>Geo mode</p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/geo-mode-providers.html"></iframe>
-        </section>
-        <section>
-          <h2>Features:</h2>
-          <p><a target="_blank"
-              href="https://doc.linkurio.us/ogma/latest/examples/hover.html">Interactions</a>
-          </p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/manual-resizing.html"></iframe>
-        </section>
-        <section>
-          <h2>Features:</h2>
-          <p><a target="_blank"
-              href="https://doc.linkurio.us/ogma/latest/examples/group-nodes.html">Transformations</a>
-          </p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/visual-grouping.html"></iframe>
-        </section>
-        <section>
-          <h2>Features:</h2>
-          <p>Algorithms</p>
-          <iframe height="500" width="800"
-            src="https://doc.linkurio.us/ogma/3.1.5/resources/cycles.html"></iframe>
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>1. Setting up the environment</h2>
-          <div class="fragment">Example: Ogma + <img src="images/webpack.png"
-              style="height: 1.5em; border: 0; vertical-align: middle;">Webpack
-          </div>
-          <br>
-          <ul>
-            <li class="fragment">
-              Get Node & npm <a
-                href="https://nodejs.org/">https://nodejs.org/</a>
-            </li>
-            <li class="fragment">
-              <pre><code class="lang-shell">npm i -D webpack webpack-cli \
-css-loader style-loader \
-webpack-dev-server html-webpack-plugin
-</code></pre>
-            </li>
-            <li class="fragment">
-              Set up your <code>package.json</code>
-              <pre><code class="lang-json" style="max-height: 200px;">{
-  "name": "01-setup",
-  "version": "1.0.0",
-  "main": "src/index.js",
-  "scripts": {
-    "build": "webpack",
-    "start": "webpack -w"
-  },
-  "devDependencies": {
-    "css-loader": "^4.3.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
-  }
-}</code></pre>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>1. Setting up the environment</h2>
-          <div>Example: Ogma + <img src="images/webpack.png"
-              style="height: 1.5em; border: 0; vertical-align: middle;">Webpack
-          </div>
-          <br>
-          <div>
-            <code>src/index.js</code>
-            <pre><code data-line-numbers>import "styles.css";
-
-// your code will go here
-console.log('Welcome to visualisation with Ogma');
+          <p style="font-size: 1.75em;">Optimisations</p>
+            <p>Charger par chunks</p>
+            <pre><code>
+      // setGraph
+      ogma.setGraph(myGiganticGraph1, {batchSize: 1000});
+      // addGraph
+      ogma.addGraph(myGiganticGraph2, {batchSize: 1000});
+      // addNodes
+      ogma.addNodes(myNumerousNodes, {batchSize: 1000});
+      // addEdges
+      ogma.addEdges(myNumerousEdges, {batchSize: 1000});
             </code></pre>
-          </div>
-          <div class="fragment">
-            <code>src/styles.css</code>
-            <pre><code data-line-numbers>#container {
-  display: block;
-  width: 100%;
-  height: 100%;
-}</code></pre>
-          </div>
         </section>
         <section>
-          <h2>1. Setting up the environment</h2>
-          <div>Example: Ogma + <img src="images/webpack.png"
-              style="height: 1.5em; border: 0; vertical-align: middle;">Webpack
-          </div>
-          <p>Set up the Webpack config</p>
-          <pre><code>const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-module.exports = {
-  module: {
-    rules: [{
-      test: /\.css$/i,
-      use: ['style-loader', 'css-loader'],
-    }]
-  },
-  entry: './src/index.js',
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
-  },
-  plugins: [new HtmlWebpackPlugin()],
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 9000
-  }
-};
-</code></pre>
+          <p style="font-size: 1.75em;">Optimisations</p>
+          <p>Charger Intelligement</p>
+          <pre><code>
+      //setGraph
+      api.get('just-what-i-need')
+      .then((justWhatINeed) => {
+        ogma.addGraph(justWhatINeed, {batchSize: 1000});
+      })
+          </code></pre>
         </section>
-        <section>
-          <h2>Problems</h2>
-          <div>Example: Ogma + <img src="images/webpack.png"
-              style="height: 1.5em; border: 0; vertical-align: middle;">Webpack
-          </div>
-          <pre><code class="lang-shell">npm start</code></pre>
-          <div class="fragment"><img style="max-height: 400px;"
-              src="images/example-0-empty.png"></div>
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>2. Installing Ogma</h2>
-          <div class="fragment">go to <a
-              href="https://get.linkurio.us">https://get.linkurio.us</a>
-          </div>
-          <div class="fragment">
-            <img src="images/download-1.png" />
-          </div>
-          <div class="fragment">Download &rarr; copy your <code>npm</code> link
-          </div>
-          <div class="fragment">
-            <pre>
-              <code class="lang-shell">npm install --save https://get.linkurio.us/.../?secret=&lt;YOUR_API_KEY&gt;</code>
-            </pre>
-          </div>
-          <div class="fragment">
-            <pre>
-              <code>import Ogma from 'ogma';</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <h2>2.1 Let's show some nodes</h2>
-          <pre>
-            <code class="stretch" class="lang-javascript" data-line-numbers="1-2|4-7|9-10|12-20">// index.js
-import Ogma from 'ogma';
-
-// create a container and add CSS to it
-const container = document.createElement('div');
-container.id = 'vis';
-document.body.appendChild(container);
-
-// initialize Ogma
-const ogma = new Ogma({ container });
-
-// add some nodes and edges
-ogma.addNode({ id: 0, attributes: {
-  x: -120, y: -75
-}});
-ogma.addNode({ id: 1, attributes: {
-  x: 120, y: -75
-}});
-// add edge
-ogma.addEdge({ source: 0, target: 1 });
-            </code>
-          </pre>
-        </section>
-        <section>
-          <h2>2.1 Let's show some nodes</h2>
-          <img src="images/example-0-nodes.png">
-        </section>
-        <section>
-          <h2>2.3 Updating Ogma version</h2>
-          <p>We encourage you to update Ogma every time you get a notification
-            that the new version is out.</p>
-          <br>
-          <ul>
-            <li>go to <a href="https://get.linkurio.us">get.linkurio.us</a></li>
-            <li>get a new <code>npm</code> link (it contains the package
-              version)</li>
-            <li>copy it into your <code>package.json</code></p>
-            <li>run <code>npm install</code></li>
-          </ul>
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>3. Accessing your data</h2>
-          <p>Ogma + neo4j database</p>
-          <p>For this example we have loaded a supply chain dataset from <a
-              href="https://neo4j.com/graphgist/supply-chain-management">this
-              neo4j tutorial</a> into a hosted neo4j instance</p>
-        </section>
-        <section>
-          <h2>3. Accessing your data</h2>
-          <p>To load data into Ogma you need to parse it into its internal
-            format:</p>
-          <pre><code class="lang-json">{
-  "nodes": [{
-    "id": 0, // number|string, required
-    // see https://doc.linkurio.us/ogma/latest/api.html#NodeAttributes
-    "attributes": {}, // visual attributes
-    "data": {}, // any data properties, free format
-  }, ...],
-  "edges": [{
-    "source": 0, // required
-    "target": 1, // required,
-    // see https://doc.linkurio.us/ogma/latest/api.html#EdgeAttributes
-    "attributes": {}, // same as for nodes
-    "data": {}
-  }]
-}</code></pre>
-          <p>See <a
-              href="https://doc.linkurio.us/ogma/latest/api.html#NodeAttributes">NodeAttributes</a>,
-            <a
-              href="https://doc.linkurio.us/ogma/latest/api.html#EdgeAttributes">EdgeAttributes</a>
-            docs
-          </p>
-        </section>
-        <section>
-          <h2>3. Accessing your data</h2>
-          <ul>
-            <li>Load the dataset</li>
-            <li>Get your connection credentials
-              <pre><code>import { HOST, DB_NAME, PASSWORD } from '../../credentials.json';</code></pre>
-            </li>
-            <li>Connect to your database</li>
-            <li>Establish the API to query the graph
-              <pre><code>const query = "MATCH (a)-[r]-() RETURN a, r";
-return this._session
-  .run(query)
-  // parse the response into the format Ogma understands
-  .then(response => ogma.parse.neo4j(response));</code></pre>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>3. Accessing your data</h2>
-          <p>Your dummy neo4j client looks like this:</p>
-          <pre><code class="lang-javascript">// Create a driver to connect to the Neo4j database
-const driver = neo4j.driver(
-  HOST, neo4j.auth.basic(DB_NAME, PASSWORD)
-);
-const session = driver.session({
-  database: DB_NAME,
-  defaultAccessMode: neo4j.session.READ,
-});
-
-// Query the graph to the server and load it to ogma
-const query = "MATCH (a)-[r]-() RETURN a, r";
-session
-  .run(query)
-  .then(response => ogma.parse.neo4j(response));
-</code></pre>
-        </section>
-        <section>
-          <h2>3. Accessing your data</h2>
-          <pre><code>// instance of the API client
-const api = new API(HOST, DB_NAME, PASSWORD);
-
-// load the graph
-api.getGraph()
-  .then((rawGraph) => ogma.setGraph(rawGraph))
-  // setup the camera so we can see the entire graph
-  .then(() => ogma.view.locateGraph())
-  .then(() => {
-    // show some information about the graph
-    const nodes = ogma.getNodes();
-    const edges = ogma.getEdges();
-    document.getElementById('controls').innerHTML =
-      `Loaded <br>${nodes.size} nodes, ${edges.size} edges`;
-    });</code></pre>
-        </section>
-        <section>
-          <h2>3. Accessing your data</h2>
-          <img style="max-height: 600px;" src="images/example-1-load.png">
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>4. Adding styles</h2>
-          <img style="max-height: 600px;" src="images/example-1-load.png">
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>What is missing?</p>
-          <ul>
-            <li class="fragment">Positions</li>
-            <li class="fragment">Nodes meaning</li>
-            <li class="fragment">Edges meaning</li>
-            <li class="fragment">Insights</li>
-          </ul>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Positions</p>
-          <p class="fragment">Let's run the layout!</p>
-          <div class="fragment">
-            <pre>
-            <code class="lang-javascript" data-line-numbers>api.getGraph();
-  .then((rawGraph) => ogma.setGraph(rawGraph))
-  // apply the force layout to the graph
-  // (places the nodes so it is readable )
-  .then(() => ogma.layouts.force());
-  </code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Positions</p>
-          <img src="images/example-2-layout.gif">
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Nodes color and icon coding:</p>
-          <pre><code class="lang-javascript">// Define buckets of importance for nodes
-// some values repeat themselves for different types
-const supplierStyle = { color: "#6FC1A7", icon: "\uEA04" };
-const rawSupplierStyle = { color: "#3DCB8D", icon: "\uEA03" };
-const wholeSalerStyle = { color: "#E77152", icon: "\uEA09" };
-const retailerStyle = { color: "#9AD0D0", icon: "\uEA06" };
-
-const nodeStyles = {
-  'SupplierA': supplierStyle,
-  'SupplierB': supplierStyle,
-
-  'RawSupplierA': rawSupplierStyle,
-  'RawSupplierB': rawSupplierStyle,
-  'AllRawSupliers': rawSupplierStyle,
-
-  'Retailer': retailerStyle,
-  'AllRetailers': retailerStyle,
-
-  'Wholesaler': wholeSalerStyle,
-  'AllWholesalers': wholeSalerStyle,
-
-  'FrameSupplier': { color: "#6FC1A7", icon: "\uEA05" },
-  'WheelSupplier': { color: "#6FC1A7", icon: "\uEA08" },
-
-  'Product': { color: "#76378A", icon: "\uEA02" }
-};</code></pre>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Edges color and size coding:</p>
-          <pre><code class="lang-javascript">// edge color and width buckets
-const edgeBuckets = ogma.rules.slices({
-  field: "neo4jProperties.quantity",
-  values: [
-    { color: "#DDD", width: 0.5 },
-    { color: "#AAA", width: 1.5 },
-    { color: "#777", width: 2 },
-    { color: "#444", width: 3.5 }
-  ],
-  // buckets are
-  // (-Infinity, 15], (15, 150], (150, 280], [280, Infinity)
-  stops: [15, 150, 280]
-});</code></pre>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Apply edge styling</p>
-          <div>
-            <pre><code class="lang-javascript">ogma.styles.addRule({
-  edgeAttributes: (edge) => {
-    const quantity = edge.getData("neo4jProperties.quantity");
-    const { color, width } = edgeBuckets(edge);
-    return {
-      shape: { head: "arrow" },
-      color, width
-    };
-  }});</code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Apply edge styling</p>
-          <div>
-            <img style="max-height: 500px;" src="images/example-3-edges.png">
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Apply node styling</p>
-          <div>
-            <pre><code class="lang-javascript">ogma.styles.addRule({
-  nodeAttributes: (node) => {
-    // get data field
-    const type = getNodeType(node);
-    // match with the styles object
-    const { color, icon } = nodeStyles[type];
-
-    // sizing: quantity of incoming edges / 300
-    // nodes size depend on the quantity of Product that is exanged through them
-    const radius = node
-      .getAdjacentEdges()
-      .reduce((acc, e) => acc + e.getData("neo4jProperties.quantity"), 0) / 300 + 5;
-
-    return {
-      icon: {
-        font: "icon-font",
-        color: "#000000",
-        content: icon,
-      },
-      color, radius
-    };
-}});</code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Apply node styling</p>
-          <div>
-            <img style="max-height: 500px;" src="images/example-3-nodes.png">
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Add insights</p>
-          <div>
-            <pre><code class="lang-javascript">// Helper function to check if a node should pulse
-// Nodes pulses if the total demand is higher than their stock
-function hasRisk(node) {
-  const totalDemand = node
-    .getAdjacentEdges()
-    .filter((edge) => edge.getSource() === node)
-    .reduce((total, edge) => total + edge.getData("neo4jProperties.quantity"), 0);
-  return node.getData("neo4jProperties.stock") - totalDemand < 100;
-}
-
-// enable pulse animation
-ogma.getNodes().filter(hasRisk).pulse();
-</code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>4. Adding styles</h2>
-          <p>Add insights</p>
-          <div>
-            <img style="max-height: 500px;" src="images/example-3-pulse.gif">
-          </div>
-          <div class="fragment">
-            <a
-              href="https://github.com/linkurious/ogma-training/examples/03-styling/">Get
-              the code on Github</a>
-          </div>
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Let's look at the the same graph with the geo reference</p>
-          <pre><code class="lang-javascript">// let Ogma know where to look for the coordinates
-ogma.geo.enable({
-  longitudePath: 'neo4jProperties.lon',
-  latitudePath: 'neo4jProperties.lat'
-});</code></pre>
-          <div class="fragment">
-            <img style="max-height: 400px;" src="images/example-4-geo.png">
-            <div>
-              <a
-                href="https://doc.linkurio.us/ogma/latest/tutorials/geo-leaflet/index.html">Ogma
-                geo mode tutorial</a>
-            </div>
-          </div>
-        </section>
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Let's clear up the view a bit</p>
-          <p class="fragment">First let's group the parallel edges</p>
-          <div class="fragment">
-            <pre><code class="lang-javascript">const edgeGrouping = ogma.transformations.addEdgeGrouping({
-  selector: (edge) => edge.getData("neo4jType") === "DELIVER",
-  generator: (edges) => {
-    return {
-      data: { neo4jProperties: {  quantity: edges.reduce(...), 0), }}
-    };
-  }
-});</code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Parallel edges are grouped</p>
-          <div>
-            <img style="max-height: 500px;" src="images/example-4-edges.png">
-          </div>
-        </section>
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Let's group the nodes: join the raw suppliers, wholesalers and
-            group the part suppliers:</p>
-          <div class="fragment">
-            <pre><code class="lang-javascript">const nodeGrouping = ogma.transformations.addNodeGrouping({
-  groupIdFunction: (node) => node.getData("neo4jLabels")[0],
-  // don't group the product
-  selector: (node) => node.getData("neo4jLabels")[0] !== "Product",
-  nodeGenerator: (nodes, groupId) => {
-    // choose label for the style
-    let label = ['Wholesalers']; // default
-    if (groupId === "SupplierA") label = ["FrameSupplier"];
-    else if (groupId === "SupplierB") label = ["WheelSupplier"];
-    else if (/RawSupplier/.test(groupId)) label = ["RawSuppliers"];
-    else if (groupId === 'Retailer') label = ["Retailers"];
-
-    // sizing criteria
-    const quantity = nodes.getData("neo4jProperties.quantity")
-      .reduce((total, q) => total + q, 0);
-
-    // generated group node
-    return {
-      data: {
-        neo4jLabels: label,
-        neo4jProperties: { quantity }
-      }
-    };
-  }
-});</code></pre>
-          </div>
-        </section>
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Nodes are now grouped by the type:</p>
-          <div>
-            <img style="max-height: 450px;" src="images/example-4-nodes.png">
-          </div>
-        </section>
-        <section>
-          <h2>5. Geo mode + Transformations</h2>
-          <p>Let's make sense of this new view on the supply chain by applying a
-            different layout:</p>
-          <div class="fragment">
-            <img src="images/example-4-layout.png">
-          </div>
-          <div class="fragment">
-            <a
-              href="https://github.com/linkurious/ogma-training/examples/04-transformations/">Get
-              the code on Github</a>
-          </div>
-        </section>
-      </section>
-
-      <section data-background-image="images/background.png">
-        <section>
-          <h2>6. UI & frameworks</h2>
-          <p>Let's add some controls</p>
-          <div class="fragment">
-            <pre>
-            <code class="lang-html"><!-- index.html -->
-<div id="controls">
-  <button id="edge-grouping">Edge grouping: off</button>
-  <button id="node-grouping">Node grouping: off</button>
-  <button id="geo-mode">Geo mode</button>
-</div>
-            </code>
-          </pre>
-          </div>
-          <div class="fragment">
-            <pre>
-            <code class="lang-javascript">// index.js
-const edgeGroupingButton = document.getElementById('edge-grouping');
-edgeGroupingButton.addEventListener('click', () => {
-  edgeGrouping.toggle()
-    .then(() => {
-      const state = edgeGrouping.isEnabled() ? 'on' : 'off';
-      edgeGroupingButton.innerHTML = 'Edge grouping: ' + state;
-    });
-});
-            </code>
-          </pre>
-          </div>
-        </section>
-        <section>
-          <h2>6. UI & frameworks</h2>
-          <img src="images/example-5-ui.png">
-        </section>
-        <section>
-          <h2>6. UI & frameworks</h2>
-          <p>Final result</p>
-          <iframe width="100%" height="550"
-            src="examples/04-transformations/"></iframe>
-        </section>
-        <section>
-          <div>
-            <a href="https://github.com/linkurious/ogma-training/">Get
-              the code on Github</a>
-          </div>
-        </section>
-        <section>
-          <h2>6. UI & frameworks</h2>
-          <p>Ogma integrates nicely with all the popular front-end frameworks
-          </p>
-          <p><img src="images/react-logo.jpg" width="150" class="logo">
-            <img src="images/ts-logo.png" width="150" class="logo">
-            <img src="images/vue-logo.png" width="150" class="logo">
-          </p>
-          <p><img src="images/webpack.png" width="150" class="logo">
-            <img src="images/angular-logo.svg" width="150" class="logo"> <img
-              src="images/node-logo.png" width="150" class="logo">
-          </p>
-          <div class="fragment"><a
-              href="https://doc.linkurio.us/ogma/latest/tutorials/">https://ogma.linkurio.us/tutorials/</a>
-          </div>
-        </section>
-      </section>
-      <section data-background-image="images/background.png">
-        <h2>Questions?</h2>
-        <p>ogma@linkurio.us</p>
-        <p><a href="https://ogma.linkurio.us">Ogma docs</a>
-        <p><a href="https://get.linkurio.us">Distribution center</a></p>
-        <p><a href="https://github.com/linkurios/ogma-training/">Code from this
-            presentation</a></p>
       </section>
     </div>
   </div>

@@ -1,5 +1,5 @@
 Reveal.initialize({
-  //plugins: [hljs],
+  plugins: [ RevealHighlight ],
   hash: true,
   slideNumber: true,
   width: "100%",
