@@ -1,0 +1,36 @@
+{
+  "name": "ogma-training",
+  "version": "1.0.0",
+  "description": "Ogma graph visualisation engine training files",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run build-examples",
+    "start": "serve docs",
+    "build-examples": "cd examples && ./build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linkurious/ogma-training.git"
+  },
+  "keywords": [
+    "ogma",
+    "graph",
+    "visualisation",
+    "training",
+    "examples"
+  ],
+  "author": "Linkurious SAS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Linkurious/ogma-training/issues"
+  },
+  "homepage": "https://github.com/Linkurious/ogma-training#readme",
+  "devDependencies": {
+    "codeceptjs-resemblehelper": "^1.9.4",
+    "parcel": "^2.0.0-rc.0",
+    "serve": "^12.0.1"
+  },
+  "dependencies": {
+    "highlight.js": "^11.2.0"
+  }
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/plugin.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reset.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/theme/black.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/monokai.min.css" />
+  <link type="text/css" rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background-image="images/background.png">
+        <section>
+          <p style="font-size: 1.75em;">Les transformations dans</p>
+          <div style="margin-top: 30px; font-size: 72px;">
+            <img src="images/logotype.png" id="header-logo" />Ogma
+          </div>
+        </section>
+        <section>
+          <p style="font-size: 1.75em;">Qu' est ce qu'une transformation ?</p>
+          <ol>
+            <li class="fragment fade-in">Modification de la topologie</li>
+            <li class="fragment fade-in">Calculée en live</li>
+            <li class="fragment fade-in">Reversible</li>
+            <li class="fragment fade-in">Peut etre sauvegardée</li>
+          </ol>
+        </section>
+        <section data-background-image="images/background.png">
+          <p style="font-size: 1.75em;">Quelles transformations ?</p>
+          <ol>
+            <li class="fragment fade-in">Filtres</li>
+            <li class="fragment fade-in">Groupes</li>
+            <li class="fragment fade-in">Générateurs/Aggrégateurs</li>
+            <li class="fragment fade-in">Propriétées virtuelles</li>
+          </ol>
+        </section>
+      </section>
+      <section data-background-image="images/background.png">
+        <section>
+          <p style="font-size: 1.75em;">Comment ça marche ?</p>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Le pipeline</li>
+            <li class="fragment fade-in">Les selecteurs</li>
+            <li class="fragment fade-in">L'état des transformations</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Le pipeline</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Les transformations s'empilent</li>
+            <li class="fragment fade-in">Les modification du graph declenchent le refresh</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Les selecteurs</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Seuls les éléments visibles passent dans le selecteur</li>
+            <li class="fragment fade-in">Seuls les éléments sélectionnés sont transformés</li>
+          </ul>
+        </section>
+        <section>
+          <h2>L'état des transformations</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">enabled/disabled</li>
+            <li class="fragment fade-in">duration</li>
+          </ul>
+        </section>
+      </section>
+      <section data-background-image="images/background.png">
+      </section>
+
+    </div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
