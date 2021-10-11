@@ -31,6 +31,7 @@
     "serve": "^12.0.1"
   },
   "dependencies": {
-    "highlight.js": "^11.2.0"
+    "highlight.js": "^11.2.0",
+    "ogma": "file:ogma"
   }
 }
