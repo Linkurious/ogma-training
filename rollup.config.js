@@ -4,6 +4,7 @@ import noderesolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy'
 import fs from 'fs/promises'
 import path from 'path';
+import menu from './menu/index.js';
 
 const trainingsDir = './trainings'
 const dstDir = './dist'
@@ -38,15 +39,33 @@ function getOptions() {
               },
             ]
           }),
+          i === 0 
+          ? menu()
+          : null ,
           process.env.ROLLUP_WATCH
-          ? browsersync({
-              server: 'dist/',
-              port: 3002
-            })
-          : null
+            ? browsersync({
+                server: 'dist/',
+                port: 3002
+              })
+            : null,
         ]
       }
     }))
+    // .then(foldersOptions => {
+    //   // build the menu
+    //   foldersOptions.push({
+    //     input: './menu/template.html',
+    //     output: {
+    //       file: path.join(dstDir,'index.html'),
+    //       format: 'iife',
+    //     },
+    //     plugins: [
+    //       menu(),
+    //      
+    //     ]
+    //   });
+    //   return foldersOptions;
+    // })
 }
 
 export default getOptions;
