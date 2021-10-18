@@ -1,0 +1,29 @@
+{
+  "name": "ogma-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "rollup -cw",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linkurious/ogma-training.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "rollup": "^2.58.0",
+    "rollup-plugin-browsersync": "^1.3.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "serve": "^12.0.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Linkurious/ogma-training/issues"
+  },
+  "homepage": "https://github.com/Linkurious/ogma-training#readme"
+}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/plugin.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reset.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/reveal.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/theme/black.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.2/plugin/highlight/monokai.min.css" />
+  <link type="text/css" rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background-image="images/background.png">
+        <section>
+          <h2>Les cartes avec</h2>
+          <div style="margin-top: 30px; font-size: 72px;">
+            <img src="images/logotype.png" id="header-logo" />Ogma
+          </div>
+        </section>
+        <section>
+          <h2>Ogma geo mode c'est:</h2>
+          <ol>
+            <li class="fragment fade-in">Une API simple</li>
+            <li class="fragment fade-in">Basée sur leaflet</li>
+            <li class="fragment fade-in">Possibilité d'export</li>
+            <li class="fragment fade-in">Possibilité de grouper</li>
+          </ol>
+        </section>
+        <section data-background-image="images/background.png">
+          <h2>API</h2>
+          <pre>
+            <code class="lang-javascript">
+              ogma.geo.enable()
+            </code>
+          </pre>
+        </section>
+        <section data-background-image="images/background.png">
+          <h2>API</h2>
+          <pre>
+            <code class="lang-javascript">
+              ogma.geo.enable({
+                tiles:{
+                  url:"//{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                }
+              })
+            </code>
+          </pre>
+        </section>
+        <section data-background-image="images/background.png">
+          <h2>API</h2>
+          <pre>
+            <code class="lang-javascript">
+                ogma.geo.disable()
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>
+            <a
+              href="https://doc.linkurio.us/ogma/latest/playground/index.html#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">
+              Demo
+            </a>
+          </h2>
+        </section>
+      </section>
+      <section data-background-image="images/background.png">
+        <section>
+          <h2>Coordonées</h2>
+          <ol>
+            <li class="fragment fade-in">Projection Mercator (EPSG3857)</li>
+            <li class="fragment fade-in">Stockées par node</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Coordonées</h2>
+          <pre>
+            <code class="lang-javascript">
+              ogma.geo.enable({
+                latitudePath: "lat",
+                longitudePath: "long"
+              })
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Coordonées</h2>
+          <pre>
+            <code class="lang-javascript">
+              ogma.getNodes().get(0).setData('lat', 48.858838);
+              ogma.getNodes().get(0).setData('long', 2.343436);
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>
+            <a
+              href="https://doc.linkurio.us/ogma/latest/playground/index.html#H4sIAKFbbWEAA6VV32/bNhD+VzjtQQ4gS9YSF57mBBu2ABtQoAXal6HuAy2eJKYUqZKnxG7g/71HynJsw20fagMW78j7vu9+UH6OkK9dVHyghUQFURFJLWCTNtiqKIlKoxE0knv5yz9v/n7//9t75rfuVnq5fzK2bICLsKJ1C8hZ2XDrAG9XUY/VdLGKWDbuK6k/DUvGLCg64nCrwDUAuIrGncZCRVsNYueKLCuFfnBpqUwvKsUtpKVpM/7AN5mSa5cp4JUCzPJ0nuajlZbOjYAHdlda2SFztvxZ9AcCv1tmAyDBH6XHcNsB4SNsMAsqLmQ6pjj4BrFDNbN9OYOxNmI7ihfykUlBMbXlXTP1veFSgw1CaHM8t+4Rjb6733TG4jLbm5cqMPT6PBWvYc9LYoYu0yw8Snh6hxxpSHSv1C45n5kHdzIxsvX87E3dclZZ07L4T1+d3krTu8yQO/7DZ0kRDlnIid2yZ8+vjQBXsA+D5uDyHykKFr/lVro4GX2CIy/YM1OcxPQCCnazSBfzxeJ6kTBldL33/pZe39D3FdsdQjmilVQdT/XMNgWbJWwbfn3nXqiY5UL2dCifsd0QPIKcSntttDD6e9rmNESz31/l8xNt01maX9/M85vvictn5/JGukv6/ONjAANRf7OW9701Drl9kexMb0uSdF5mOlTDMellnU9SYENpHjQeGE6VrfTuqPd+Fqj1Gp7CtEyCyDAQxfAIbId5J9izGxAT3lUA9FBpDcYHpKD5WsHkyhvClH1Lg5l+7sFu34GCEo2dxMPtiMOZlAtx/0iHXktHQ0zAk7hUsvwUJ5Mrdns3Vs8C9lYH2SmEW5Z2uh5kh76bJ60Mpwqj7eFQKoLqTlxBs3/86H69vCRObpi/pIOmltojNQ1HAOwoD6nr0awoYFrxVioan39BPQLKkifsLyu5Spjj2k0dWFnRaWrPSv96Vt6BAw2pHxDXhorWjpaCilo9rK2sm4PRGSdRGtJFfzJG0ZAE97HYwDf0IJB8IyRw57Nuc0R4ML9Mw/snXJFZAL1QzY9J5ELTQbzn6/98QFTku6/P184sAQcAAA==">
+              Demo
+            </a>
+          </h2>
+        </section>
+      </section>
+      <section data-background-image="images/background.png">
+        <section>
+          <h2>Export</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">
+              <a
+                href="https://doc.linkurio.us/ogma/latest/playground/index.html#H4sIAIdAbWEAA6VU227bOBD9Fa72wQlgS3YSF16tE+yiDdAFstsAzcui7gMtjmSmFKny4ksN/3uHpKXYhtM+1AEicmZ45nDmcLaJpXOT5J9wwa2AJE+4ZLBOF7YWST8plLQgLZqnv7378Pbp/8d74l13MzndfwmZLoCysMJ1DZaSYkG1AXs7S5wtB5NZQrLWL7j8EpeEaBAYYuxGgFkA2FnSehYaSnQtrG1MnmUFk88mLYRyrBRUQ1qoOqPPdJ0JPjeZAFoKsNkoHaejdpcWxrSAXXZTaN5YYnTxq+jPCH43zSIgwh9cj9hNA4hvYW2zwOLMTdsrRlskG6uZ7csZNnPFNi15xpeEMzxTadosBr43lEvQgQg627i5s1bJGArrRmlMd3cfFtMsOs/WI3b+9GKe0Z4FUos9R2UsOaw+WmpRMtIJseu/KOjlSkcK8iBk6wFrqisuczL80+8ayhiXVbst8cCgpDUXm5y8B7EEywvaJ39rTkWfGCrNwIDmJUbvfJV+PylHzGFV0yLOFV65bncCStuuNa8W3aZRhluukBc+CSWchWA+JBvzxZqGLK+cCclHw2Z9kLHbfhuEQnsL/jzqcTm3SeG0UXq/xafJ5UcQUPhE/yqGtpIKA/3EtFYM1VjibYLyg/9cPQed5FdDX33hapnko+tdP2nJ/iRw9/mEDkpBCfGAt0hyDC25NvbxFazRARSmPIp9B8LSJ9UgCrp8vzRHOaLHdLmAcas0vsDgTEslvDbaLG+V81K6wiyNVkvOfMrEbLDz6wQxT06vlGbvscXCt9mHhrrtdodibUV/JFVe+w6TD1VNSalVTXp/+YftNFfOZArNPezbTOIJY0nQH7mNupPYIJOTT/GBBZP/cZaT3iPV3PT6rY1RS3OyJYIiGccgJzeTdDKeTK4nfSKUrPbWq/T6Bv/ekF13lNpYO59qS1BLwz7B54L//dB5SUU0Zdxh0GhIULz+aAtyTO1BSabkj7iNcf4N/3gzGh9xGwzT0fXNeHTzI3Io9BN6bbpz/PzncwADVr1ay3unlUHZv1A2yukCKZ2WGYMqOEx6nueKM7vAa3YcuwzHzPC9HvTeawFbL2EV1HIRSAZB5PETsnWzCWFPplUP8S4DoIdKK1ApSDoXcHHpjUwVrkZRpl8d6E0cA0pf9PZDqIdBKc7P+yXGPHCD+gX0FoIXX7C6F5fk9i4WToN1Wga+aTybNrKKfLHdaiWFolhYqx3sK4QoOMY6Q6C5w4Rnpj+OjDiMgD3R+T/+TfkB8B1+8oOdXwgAAA==">
+                PNG
+              </a>
+            </li>
+            <li class="fragment fade-in">
+              <a
+                href="https://doc.linkurio.us/ogma/latest/playground/index.html#H4sIAIdAbWEAA6VU227bOBD9Fa72wQlgS3YSF16tE+yiDdAFstsAzcui7gMtjmSmFKny4ksN/3uHpKXYhtM+1AEicmZ45nDmcLaJpXOT5J9wwa2AJE+4ZLBOF7YWST8plLQgLZqnv7378Pbp/8d74l13MzndfwmZLoCysMJ1DZaSYkG1AXs7S5wtB5NZQrLWL7j8EpeEaBAYYuxGgFkA2FnSehYaSnQtrG1MnmUFk88mLYRyrBRUQ1qoOqPPdJ0JPjeZAFoKsNkoHaejdpcWxrSAXXZTaN5YYnTxq+jPCH43zSIgwh9cj9hNA4hvYW2zwOLMTdsrRlskG6uZ7csZNnPFNi15xpeEMzxTadosBr43lEvQgQg627i5s1bJGArrRmlMd3cfFtMsOs/WI3b+9GKe0Z4FUos9R2UsOaw+WmpRMtIJseu/KOjlSkcK8iBk6wFrqisuczL80+8ayhiXVbst8cCgpDUXm5y8B7EEywvaJ39rTkWfGCrNwIDmJUbvfJV+PylHzGFV0yLOFV65bncCStuuNa8W3aZRhluukBc+CSWchWA+JBvzxZqGLK+cCclHw2Z9kLHbfhuEQnsL/jzqcTm3SeG0UXq/xafJ5UcQUPhE/yqGtpIKA/3EtFYM1VjibYLyg/9cPQed5FdDX33hapnko+tdP2nJ/iRw9/mEDkpBCfGAt0hyDC25NvbxFazRARSmPIp9B8LSJ9UgCrp8vzRHOaLHdLmAcas0vsDgTEslvDbaLG+V81K6wiyNVkvOfMrEbLDz6wQxT06vlGbvscXCt9mHhrrtdodibUV/JFVe+w6TD1VNSalVTXp/+YftNFfOZArNPezbTOIJY0nQH7mNupPYIJOTT/GBBZP/cZaT3iPV3PT6rY1RS3OyJYIiGccgJzeTdDKeTK4nfSKUrPbWq/T6Bv/ekF13lNpYO59qS1BLwz7B54L//dB5SUU0Zdxh0GhIULz+aAtyTO1BSabkj7iNcf4N/3gzGh9xGwzT0fXNeHTzI3Io9BN6bbpz/PzncwADVr1ay3unlUHZv1A2yukCKZ2WGYMqOEx6nueKM7vAa3YcuwzHzPC9HvTeawFbL2EV1HIRSAZB5PETsnWzCWFPplUP8S4DoIdKK1ApSDoXcHHpjUwVrkZRpl8d6E0cA0pf9PZDqIdBKc7P+yXGPHCD+gX0FoIXX7C6F5fk9i4WToN1Wga+aTybNrKKfLHdaiWFolhYqx3sK4QoOMY6Q6C5w4Rnpj+OjDiMgD3R+T/+TfkB8B1+8oOdXwgAAA==">
+                SVG
+              </a>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section data-background-image="images/background.png">
+
+        <section>
+          <h2>Les groupes en geo mode</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Similaires aux groupes normaux</li>
+            <li class="fragment fade-in">Dépendent du zoom</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Les groupes en geo mode</h2>
+          <a href="https://tinyurl.com/2ce2ebkk">
+            Demo
+          </a>
+        </section>
+      </section>
+    </div>
+  </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
