@@ -50,6 +50,12 @@ function getOptions() {
             ]
           }),
           i === folders.length - 1
+            ? copy({targets: [{
+              src: 'public',
+              dest: dstDir
+            }]})
+            :null,
+          i === folders.length - 1
             ? menu()
             : null,
           process.env.ROLLUP_WATCH
@@ -58,7 +64,7 @@ function getOptions() {
               port: 3002
             })
             : null,
-        ]
+        ].filter(e => e)
       }
     }))
 }
