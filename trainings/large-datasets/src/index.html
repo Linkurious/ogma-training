@@ -11,12 +11,16 @@
     <div class="slides">
       <section data-background-image="../public/background.png">
         <section>
-          <h2>Comment gerer des gros Datasets avec  dso;</h2>
+          <h2>Comment gerer des gros Datasets avec</h2>
           <div style="margin-top: 30px; font-size: 72px;">
             <img src="images/logotype.png" id="header-logo" />Ogma
           </div>
           <aside class="notes">
-            Shhh, these are your private notes 📝
+            <ol>
+              <li>gros => nodes > 2000</li>
+              <li>Pas lisible, pas facile a naviguer</li>
+              <li>Plusieurs exploitations possible</li>
+            </ol>
           </aside>
         </section>
         <section>
@@ -26,6 +30,13 @@
             <li class="fragment fade-in">Visualisation globale</li>
             <li class="fragment fade-in">Visualisation ciblée</li>
           </ol>
+          <aside class="notes">
+            <ol>
+              <li>partir d'un petit graph et l'etendre</li>
+              <li>Visualiser clusters, la topologie en general</li>
+              <li>visualiser des points d'interet, cibles par des requetes</li>
+            </ol>
+          </aside>
         </section>
         <section data-background-image="../public/background.png">
           <h2>Exploration</h2>
@@ -35,6 +46,12 @@
             <img class="fragment current-visible" data-fragment-index="0" src="images/large-expand.gif" width="300"
               height="450">
           </div>
+          <aside class="notes">
+            <ol>
+              <li>Petit graph: on peut enqueter</li>
+              <li>Gros graph: on ne voit plus rien</li>
+            </ol>
+          </aside>
         </section>
         <section data-background-image="../public/background.png">
           <h2>L'exploration requiers</h2>
@@ -43,22 +60,41 @@
             <li class="fragment fade-in">Possibilité d'étendre les noeuds</li>
           </ul>
         </section>
+        <aside class="notes">
+          <ol>
+            <li>Limiter la taille du graph, points d'interets</li>
+            <li>utilisateur controle l'expand, expand selectif</li>
+          </ol>
+        </aside>
       </section>
       <section data-background-image="../public/background.png">
         <section>
           <h2>Les problèmes</h2>
           <ol>
             <li class="fragment fade-in">Chargement</li>
-            <li class="fragment fade-in">Affichage</li>
             <li class="fragment fade-in">Layout</li>
+            <li class="fragment fade-in">Affichage</li>
           </ol>
         </section>
+        <aside class="notes">
+          <ol>
+            <li>Long chargement</li>
+            <li>Layout long</li>
+            <li>Affichage long</li>
+          </ol>
+        </aside>
         <section>
           <h2>Chargment</h2>
           <ul>
             <li class="fragment fade-in">Charger par chunks</li>
             <li class="fragment fade-in">Charger intelligement</li>
           </ul>
+          <aside class="notes">
+            <ol>
+              <li>Plus reactif, meilleur UX, plus rapide aussi</li>
+              <li>Charger que le necessaire (topo, data), eveiter de filtrer</li>
+            </ol>
+          </aside>
         </section>
         <section>
           <h2>Charger par chunks</h2>
@@ -72,6 +108,12 @@
       // addEdges
       ogma.addEdges(myNumerousEdges, {batchSize: 1000});
             </code></pre>
+            <a href="https://doc.linkurio.us/ogma/latest/playground/index.html#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">DEMO</a>
+          <aside class="notes">
+            <ol>
+              <li>Toutes les fonctions ont l'option batchSize</li>
+            </ol>
+          </aside>  
         </section>
         <section>
           <h2>Charger intelligement</h2>
@@ -82,14 +124,28 @@
         ogma.addGraph(justWhatINeed, {batchSize: 1000});
       })
           </code></pre>
+        <aside class="notes">
+          <ol>
+            <li>Avoir une bonne API, ou un middleware</li>
+            <li>Eviter de tout charger trier cote client</li>
+          </ol>
+        </aside>  
+
         </section>
         <section>
           <h2>Nettoyer votre graph</h2>
           <pre><code>
 //setGraph
-const nodeData = ogma.getNodes().get(0).getData().then(() => {});
+const nodeData = ogma.getNodes().get(0).getData();
 const isHeavy = JSON.stringify(nodeData).length >  2500;
           </code></pre>
+          <aside class="notes">
+            <ol>
+              <li>Definir un threshold de donnees</li>
+              <li>Mesurer et eliminer l'exedent</li>
+              <li>Surtout visible au chargement</li>
+            </ol>
+          </aside>
         </section>
         <section>
           <h2>Affichage</h2>
@@ -102,11 +158,26 @@ const isHeavy = JSON.stringify(nodeData).length >  2500;
           <h2>StyleRules</h2>
           <a
             href="http://localhost:8000/dist/doc/resources/editor-embed/#H4sIAF/WVWEAA5VWbW/bNhD+K4S6xjJgy04H70WVgwVtsRXY0qEO0A/zsNIiZbGhSIGk7HiG//vuSEl+SYNiNgyJx+den+PR+8jRlY3Sv+BFOMmjNBKK8cekdJWMRlGulePKgThbaba7WaqlIiQrOWXwTuCTSaEeSGl4MV9GycS6neQ2ya1dRsRwCcIgKjl3IJp4tWzSW8iY2BDBALc2tC7H6JEKxc0yaqEAOCJzSa0FMEGc0RLcdIFYLnnugi3GKz0Ogh4AEF07oRXZUNlwQFHnjFg1jmOwAc3ZzW0vzSZB4VkDpoHMwMECUyR+9U0dn4HXehPeLjSySYjkMnubG1E7Yk3uCx1o+tLlD1p+HxbZpKUK+NsIvl046oBY1Uh5GF3y/MWesSyqWhtHPqwrSgqjKzL4BfltjNCNnWgQD15jD4CGdQTXZE4U33qNeI+R9ASmZHBB6WCpDkPQD9p3H96+W4D6q+l06o0Wjcp9qSpObWP4vah4POyMWi154lA0gGYz0FHj0FmDISIwlqTSDDlI/MZH/9pib6X069iDE1dyFcdDMr85M/1OsafWQeOA4XkPaw55QD2XKjFUMV2FpJVm3KYhpRFmCfvBhy+Bd+SBhrvGqBCt5e5X3G0xUIPDsIvsa3hJd7pxNim0yXnwS4jUOYSTOtNwcIySxvJPfPVJmwduIKaCSttt0cbphdP1uRTcb4TbpdNkOkMJRk8IpnyMp08gcGfdR2DuGphD2WRCrNRbsgGHwF9KKqp24Ti0220a2Cm3xtBdDAa8F9hLCiFlPO2XFa3j+J8REd5pK20JbscLZewOKo6Mxlh6BOIT6HHvGUT7MkQ4nxMxOprwCfg3zENqk34261X83V5cXcWvZrMsu/5heBidrH8aEr8mVwTWh+FnXzJvIlQJXrtnQaEwfQm0CgPhCelPMwjV9Qz6WNtAj1GSkOSRhG4TqRB4Ak9yhzbqAK3f/51kbwL63j/wCBxb+hjH2UENmKWC/krayYCP1+djaB/ljbHatEu4eIRa+IEHZfsD8ojS0JtRGIMgBaiB4bSPYBTxu6ZacROls+9xbsmmUlF6/eNhFNXaCkR/A3j4+yIcmJtayt95AS6mo6gQxro/n7F1fWIKXJ5h33Lp6L2uwQps+esJbxHYsb0vzoTTJmk3k6027DexLiX8HNpvM7+AFVoyodZdMG90g7Ma86qN3giGmn6cg/gAn5Mhf7yOz8Y8XhAjgnd84HErmCtTPM8vPfclx4hOBDX0K4SQEpzU0BUvLiZ7MOMnCyIIWWnndNWtJFS3ezfBdFh0pKUE/oZAZR334oqatQBhAGk4VAXMl5SUgkGWIQRox+4/QPD+jC0f1PW0fjz13q9XQAE3Y0OZaGBYznrx49iWlKHTKXxBTuAU0Xg68t9kFs5ZX5ejQZo/rA1QxFLyoigKL/x37G/blPwMnxD+Vy5n6MzuT8g9Xb1HDeyz/wBk6qx/pAkAAA==">DEMO</a>
+            <aside class="notes">
+              <ol>
+                <li>Plus efficace une regle pour plusieur cas</li>
+                <li>Eviter de creer/detruire regles</li>
+                <li>Eviter les calculs compliques dans les stylesrules </li>
+                <li>TODO: example with batched results on styleRules</li>
+              </ol>
+            </aside>
         </section>
         <section>
           <h2>Curved Edges</h2>
           <a
             href="https://doc.linkurio.us/ogma/latest/playground/index.html#H4sIAFDDVmEAA51VUW/bNhD+K5z6YBlxKSfbsEK1gw1p1g3o1gDNy1D3gRLPElOK1EjKrmf4v+9ISnblpc1Q+0HU8fjdfd8dT/vEscIm+XtcCCchyROhOHyitWtkMktKrRwoh+bFd6/e3tz/dXdL/Nb1Si36JyGLGhgPK1w34Bgpa2YsuOUq6dz6+YtVQrJ+P/jY0ojWEWtK9MiyxnCtC1oJV3cFFTqzjjlLH2xWdELy/rURCk2r5HqRxfOI2MeUQn0kbtcCwjn45LLSoiMxINFg3U6CrQEcmmoD66ONBrdIITtyWBSa7wY2XGyI4HiiMqytn3s5mFBgQhq4+R+/kOv57ohv1PeciU+hD4y5RGVR/42A7TuExMKoTsrD7FSnE4dRnZ6dZUr2HtzpNifzl35ZaOd0M7xJWLthbURVH19abYUTWuUEG0TLzkEwN8xUAo3RSW/ArKXe5qQWnINC4+GpvAf+o6xF02rjyNuqYWRtdEMmP/uidkbozmYazRPEXik8YR3x72RJFGzDiTRQPDLOyeRMgwmmNcXz8TTj3Kdm75gCiTDplCyvo0zRIdSwxw+eqT9Mop3aWm/D0XQezVyXXYM06N8dmN07kFA6bdLJs+A/mVLWtqD4TY29nEYMrpt4NgaUWrfjRIZgXctRxD4+VggwhnW/KNEwX5xfDWsg9cejxyHW8QmvYw409BAdSu0pY7Ee9fF98rV9bLDHt1Ht2w2q80ZYrDWYNDKZlFKUHyez+DZi/kWhkV/vv2bSgl/6DU86/n1f0MpHQdFowSRTJfB7A5DuSy+/AWzd72c1xE5/cZiuFHU1qDTdK83BzgjwCuzhlI8EhzcbuYUN1EFVrg7pZBlpOulEK3cEMZB8U+B90+voSooduZyfiozddBvsS/L+QwCIiGttbllZpymQ6UkEtKY+9ANZzl+ShwVC4ePiYnoUacCjbWfreAXij1IKvU7+J/iw9mwH28VFr2hoG9zApwHXGRVuF8Xp/dpfogE4qJPHB4JHIyoQOOTx0Qf93ESRe8lcOiQbMvDhDtNe95PSIa4zTFkkHzvXhvbBg6+N7lqhqjQAeEG1b0pdpaskBFolswhQgQuR0im14h94PNQYoPLgwGPGXwXyxEfjI52Oh90+KTtjtelf8bMqVJwIyOYPFC/JQ+/OEjtY0dXgCNwnOPDgz9BDSX71g5+OsmtUkl9eHWbJcEefcPSD9hsj/vh/I44dDx/OBMBPmpbyDc6LJJ/PkrUw1t19AevyMygMOfJ9BdKxe90iCm75WW5E0YWuOMYCLnDU+ibzm3SrDf8Nr7b019vj98zP3NZacuylIZkb3flv0NVPyNnojeD+ZPhMofmAP2QYtcNZworf/fcL3Q//AvKggYI8CQAA">DEMO</a>
+            <aside class="notes">
+              <ol>
+                <li>Plus de charge sur la CG</li>
+                <li>Grouping regle le PB</li>
+                <li>Les edges sont toujours accessibles, juste invisibles</li>
+              </ol>
+            </aside>
         </section>
         <section>
           <h2>Layout</h2>
@@ -115,6 +186,11 @@ const isHeavy = JSON.stringify(nodeData).length >  2500;
             <li class="fragment fade-in">Stocker les positions</li>
             <li class="fragment fade-in">Pin des nodes</li>
           </ul>
+          <ol>
+            <li>Appel que quand necessaire, avec bons params</li>
+            <li>Stocker pour chargement rapide</li>
+            <li>Pin des nodes pour plus de clarte</li>
+          </ol>
         </section>
         <section>
           <h2>Optimiser les appels</h2>
@@ -124,17 +200,47 @@ const isHeavy = JSON.stringify(nodeData).length >  2500;
               autoStop: true
             })
           </code></pre>
+          <aside class="notes">
+            <ol>
+              <li>Show theta in force layout large graph</li>
+              <li>Remove elasticity (set to 0) => collision removal</li>
+              <li>Talk about clusters and shapes, layout refinement</li>
+            </ol>
+          </aside>
         </section>
         <section>
           <h2>Stocker les positions</h2>
+          <aside class="notes">
+            <ol>
+              <li>Chargement plus rapide</li>
+            </ol>
+          </aside>
         </section>
         <section>
           <h2>Pin des nodes</h2>
           <a
             href="https://doc.linkurio.us/ogma/latest/playground/index.html#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">DEMO</a>
+          <aside class="notes">
+            <ol>
+              <li>Moins de mouvement</li>
+              <li>Meme perfs</li>
+              <li>Meilleure UX</li>
+            </ol>
+          </aside>  
         </section>
         <section>
           <h2>Conclusion</h2>
+          <aside class="notes">
+            <ol>
+              <li>Rarement utile de tout charger</li>
+              <li>Avec bonnes pratiques: Ogma gere</li>
+              <li>Avoir une API adaptee</li>
+              <li>Faire gaffe aux styles, layout, donnees</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <h2>Questions ?</h2>
         </section>
       </section>
 
