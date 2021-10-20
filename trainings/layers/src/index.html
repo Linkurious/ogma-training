@@ -11,35 +11,46 @@
     <div class="slides">
       <section data-background-image="images/background.png">
         <section>
-          <h2>Les transformations dans</h2>
+          <h2>Les layers dans </h2>
           <div style="margin-top: 30px; font-size: 72px;">
-            <img src="images/logotype.png" id="header-logo" />Ogma
+            <img src="./images/logotype.png" id="header-logo" />Ogma
           </div>
         </section>
         <section>
-          <h2>Qu' est ce qu'une transformation ?</h2>
+          <h2>Qu' est ce qu'un Layer ?</h2>
           <ol>
-            <li class="fragment fade-in">Modification de la topologie</li>
-            <li class="fragment fade-in">Calculée en live</li>
-            <li class="fragment fade-in">Reversible</li>
-            <li class="fragment fade-in">Peut etre sauvegardée</li>
+            <li class="fragment fade-in">Canvas ou element DOM</li>
+            <li class="fragment fade-in">Affiché dans la viz</li>
+            <li class="fragment fade-in">Réactif à la caméra</li>
           </ol>
         </section>
         <section data-background-image="images/background.png">
-          <h2>Quelles transformations ?</h2>
-          <ol>
-            <li class="fragment fade-in">Filtres</li>
-            <li class="fragment fade-in">Groupes</li>
-            <li class="fragment fade-in">Générateurs/Aggrégateurs</li>
-            <li class="fragment fade-in">Propriétées virtuelles</li>
-          </ol>
+          <h2>API</h2>
+          <section data-notes="Something important">
+            Mes super notes
+          </section>.
+          <pre class="javascript">
+            <code>
+              ogma.layers.addCanvasLayer({
+                draw: (ctx) => {...}
+              })
+              ogma.layers.addLayer({
+               element: beautifulDomElement
+              })
+              ogma.layers.addOverlay({
+               element: beautifulDomElement,
+               position: {x: 0, y: 0},
+               size: {width: 100, height: 50}
+              })
+            </code>
+          </pre>
         </section>
       </section>
       <section data-background-image="images/background.png">
         <section>
-          <h2>Comment ça marche ?</h2>
+          <h2>Les Layers simples</h2>
           <ul class=fragment fade-in">
-            <li class="fragment fade-in">Le pipeline</li>
+            <li class="fragment fade-in">Ne bougent pas avec la caméra</li>
             <li class="fragment fade-in">Les selecteurs</li>
             <li class="fragment fade-in">L'état des transformations</li>
           </ul>

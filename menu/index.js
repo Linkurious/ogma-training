@@ -1,6 +1,5 @@
 const fs = require('fs').promises;
 const copyDir = require('recursive-copy');
-// const rimraf = require('rimraf');
 const path = require('path');
 
 const templatePath = './menu/template.html';
@@ -18,22 +17,12 @@ function getReportContent() {
             `<li><a href="${folder}">${folder}</a></li>`,
           ''
         );
-        console.log(rows)
       return `<ul>${rows}<ul>`;
     })
     .then(ul => {
       const intro = `<h2>Omga trainings</h2>`;
       return intro + ul;
     });
-}
-
-function rm(path) {
-  return new Promise((resolve, reject) => {
-    rimraf(path, err => {
-      if (err) return reject(err);
-      resolve();
-    });
-  });
 }
 
 function generateReport() {
@@ -55,12 +44,10 @@ function generateReport() {
 }
 
 export default function (options) {
-  console.log("MENU")
   return {
     name: 'menu',
-    load() {
-      this.addWatchFile(path.resolve('./menu/index.js'));
-      this.addWatchFile(path.resolve('./menu/template.html'));
+    buildStart() {
+      this.addWatchFile("trainings")
     },
     resolveId() { /* ... */ },
     generateBundle() {

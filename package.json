@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rollup -cw",
+    "notes": "node node_modules/reveal-notes-server/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
     "rollup": "^2.58.0",
     "rollup-plugin-browsersync": "^1.3.3",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-styles": "^3.14.1",
     "serve": "^12.0.1"
   },
   "author": "",
@@ -26,5 +28,15 @@
   "bugs": {
     "url": "https://github.com/Linkurious/ogma-training/issues"
   },
-  "homepage": "https://github.com/Linkurious/ogma-training#readme"
+  "homepage": "https://github.com/Linkurious/ogma-training#readme",
+  "workspaces": [
+    "trainings/general-presentation",
+    "trainings/multiple-transformations",
+    "trainings/large-datasets",
+    "trainings/using-geo-data",
+    "trainings/layers"
+  ],
+  "dependencies": {
+    "reveal.js": "^4.1.3"
+  }
 }
