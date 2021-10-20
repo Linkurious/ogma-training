@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="shortcut icon" href="../public/favicon.ico">
+  <link type="text/css" rel="stylesheet" href="../public/styles.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background-image="../public/background.png">
+        <section>
+          <h2>Comment gerer des gros Datasets avec  dso;</h2>
+          <div style="margin-top: 30px; font-size: 72px;">
+            <img src="images/logotype.png" id="header-logo" />Ogma
+          </div>
+          <aside class="notes">
+            Shhh, these are your private notes 📝
+          </aside>
+        </section>
+        <section>
+          <h2>Que faire d'un gros Dataset ?</h2>
+          <ol>
+            <li class="fragment fade-in">Exploration</li>
+            <li class="fragment fade-in">Visualisation globale</li>
+            <li class="fragment fade-in">Visualisation ciblée</li>
+          </ol>
+        </section>
+        <section data-background-image="../public/background.png">
+          <h2>Exploration</h2>
+          <div class="r-stack">
+            <img class="fragment fade-out" data-fragment-index="0" src="images/small-expand.gif" width="450"
+              height="300">
+            <img class="fragment current-visible" data-fragment-index="0" src="images/large-expand.gif" width="300"
+              height="450">
+          </div>
+        </section>
+        <section data-background-image="../public/background.png">
+          <h2>L'exploration requiers</h2>
+          <ul class=fragment fade-in">
+            <li class="fragment fade-in">Des requetes ciblées</li>
+            <li class="fragment fade-in">Possibilité d'étendre les noeuds</li>
+          </ul>
+        </section>
+      </section>
+      <section data-background-image="../public/background.png">
+        <section>
+          <h2>Les problèmes</h2>
+          <ol>
+            <li class="fragment fade-in">Chargement</li>
+            <li class="fragment fade-in">Affichage</li>
+            <li class="fragment fade-in">Layout</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Chargment</h2>
+          <ul>
+            <li class="fragment fade-in">Charger par chunks</li>
+            <li class="fragment fade-in">Charger intelligement</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Charger par chunks</h2>
+          <pre><code>
+      // setGraph
+      ogma.setGraph(myGiganticGraph1, {batchSize: 1000});
+      // addGraph
+      ogma.addGraph(myGiganticGraph2, {batchSize: 1000});
+      // addNodes
+      ogma.addNodes(myNumerousNodes, {batchSize: 1000});
+      // addEdges
+      ogma.addEdges(myNumerousEdges, {batchSize: 1000});
+            </code></pre>
+        </section>
+        <section>
+          <h2>Charger intelligement</h2>
+          <pre><code>
+      //setGraph
+      api.get('just-what-i-need')
+      .then((justWhatINeed) => {
+        ogma.addGraph(justWhatINeed, {batchSize: 1000});
+      })
+          </code></pre>
+        </section>
+        <section>
+          <h2>Nettoyer votre graph</h2>
+          <pre><code>
+//setGraph
+const nodeData = ogma.getNodes().get(0).getData().then(() => {});
+const isHeavy = JSON.stringify(nodeData).length >  2500;
+          </code></pre>
+        </section>
+        <section>
+          <h2>Affichage</h2>
+          <ul>
+            <li class="fragment fade-in">Limiter le nombre de StyleRules</li>
+            <li class="fragment fade-in">Limiter le nombre de curved edges</li>
+          </ul>
+        </section>
+        <section>
+          <h2>StyleRules</h2>
+          <a
+            href="http://localhost:8000/dist/doc/resources/editor-embed/#H4sIAF/WVWEAA5VWbW/bNhD+K4S6xjJgy04H70WVgwVtsRXY0qEO0A/zsNIiZbGhSIGk7HiG//vuSEl+SYNiNgyJx+den+PR+8jRlY3Sv+BFOMmjNBKK8cekdJWMRlGulePKgThbaba7WaqlIiQrOWXwTuCTSaEeSGl4MV9GycS6neQ2ya1dRsRwCcIgKjl3IJp4tWzSW8iY2BDBALc2tC7H6JEKxc0yaqEAOCJzSa0FMEGc0RLcdIFYLnnugi3GKz0Ogh4AEF07oRXZUNlwQFHnjFg1jmOwAc3ZzW0vzSZB4VkDpoHMwMECUyR+9U0dn4HXehPeLjSySYjkMnubG1E7Yk3uCx1o+tLlD1p+HxbZpKUK+NsIvl046oBY1Uh5GF3y/MWesSyqWhtHPqwrSgqjKzL4BfltjNCNnWgQD15jD4CGdQTXZE4U33qNeI+R9ASmZHBB6WCpDkPQD9p3H96+W4D6q+l06o0Wjcp9qSpObWP4vah4POyMWi154lA0gGYz0FHj0FmDISIwlqTSDDlI/MZH/9pib6X069iDE1dyFcdDMr85M/1OsafWQeOA4XkPaw55QD2XKjFUMV2FpJVm3KYhpRFmCfvBhy+Bd+SBhrvGqBCt5e5X3G0xUIPDsIvsa3hJd7pxNim0yXnwS4jUOYSTOtNwcIySxvJPfPVJmwduIKaCSttt0cbphdP1uRTcb4TbpdNkOkMJRk8IpnyMp08gcGfdR2DuGphD2WRCrNRbsgGHwF9KKqp24Ti0220a2Cm3xtBdDAa8F9hLCiFlPO2XFa3j+J8REd5pK20JbscLZewOKo6Mxlh6BOIT6HHvGUT7MkQ4nxMxOprwCfg3zENqk34261X83V5cXcWvZrMsu/5heBidrH8aEr8mVwTWh+FnXzJvIlQJXrtnQaEwfQm0CgPhCelPMwjV9Qz6WNtAj1GSkOSRhG4TqRB4Ak9yhzbqAK3f/51kbwL63j/wCBxb+hjH2UENmKWC/krayYCP1+djaB/ljbHatEu4eIRa+IEHZfsD8ojS0JtRGIMgBaiB4bSPYBTxu6ZacROls+9xbsmmUlF6/eNhFNXaCkR/A3j4+yIcmJtayt95AS6mo6gQxro/n7F1fWIKXJ5h33Lp6L2uwQps+esJbxHYsb0vzoTTJmk3k6027DexLiX8HNpvM7+AFVoyodZdMG90g7Ma86qN3giGmn6cg/gAn5Mhf7yOz8Y8XhAjgnd84HErmCtTPM8vPfclx4hOBDX0K4SQEpzU0BUvLiZ7MOMnCyIIWWnndNWtJFS3ezfBdFh0pKUE/oZAZR334oqatQBhAGk4VAXMl5SUgkGWIQRox+4/QPD+jC0f1PW0fjz13q9XQAE3Y0OZaGBYznrx49iWlKHTKXxBTuAU0Xg68t9kFs5ZX5ejQZo/rA1QxFLyoigKL/x37G/blPwMnxD+Vy5n6MzuT8g9Xb1HDeyz/wBk6qx/pAkAAA==">DEMO</a>
+        </section>
+        <section>
+          <h2>Curved Edges</h2>
+          <a
+            href="https://doc.linkurio.us/ogma/latest/playground/index.html#H4sIAFDDVmEAA51VUW/bNhD+K5z6YBlxKSfbsEK1gw1p1g3o1gDNy1D3gRLPElOK1EjKrmf4v+9ISnblpc1Q+0HU8fjdfd8dT/vEscIm+XtcCCchyROhOHyitWtkMktKrRwoh+bFd6/e3tz/dXdL/Nb1Si36JyGLGhgPK1w34Bgpa2YsuOUq6dz6+YtVQrJ+P/jY0ojWEWtK9MiyxnCtC1oJV3cFFTqzjjlLH2xWdELy/rURCk2r5HqRxfOI2MeUQn0kbtcCwjn45LLSoiMxINFg3U6CrQEcmmoD66ONBrdIITtyWBSa7wY2XGyI4HiiMqytn3s5mFBgQhq4+R+/kOv57ohv1PeciU+hD4y5RGVR/42A7TuExMKoTsrD7FSnE4dRnZ6dZUr2HtzpNifzl35ZaOd0M7xJWLthbURVH19abYUTWuUEG0TLzkEwN8xUAo3RSW/ArKXe5qQWnINC4+GpvAf+o6xF02rjyNuqYWRtdEMmP/uidkbozmYazRPEXik8YR3x72RJFGzDiTRQPDLOyeRMgwmmNcXz8TTj3Kdm75gCiTDplCyvo0zRIdSwxw+eqT9Mop3aWm/D0XQezVyXXYM06N8dmN07kFA6bdLJs+A/mVLWtqD4TY29nEYMrpt4NgaUWrfjRIZgXctRxD4+VggwhnW/KNEwX5xfDWsg9cejxyHW8QmvYw409BAdSu0pY7Ee9fF98rV9bLDHt1Ht2w2q80ZYrDWYNDKZlFKUHyez+DZi/kWhkV/vv2bSgl/6DU86/n1f0MpHQdFowSRTJfB7A5DuSy+/AWzd72c1xE5/cZiuFHU1qDTdK83BzgjwCuzhlI8EhzcbuYUN1EFVrg7pZBlpOulEK3cEMZB8U+B90+voSooduZyfiozddBvsS/L+QwCIiGttbllZpymQ6UkEtKY+9ANZzl+ShwVC4ePiYnoUacCjbWfreAXij1IKvU7+J/iw9mwH28VFr2hoG9zApwHXGRVuF8Xp/dpfogE4qJPHB4JHIyoQOOTx0Qf93ESRe8lcOiQbMvDhDtNe95PSIa4zTFkkHzvXhvbBg6+N7lqhqjQAeEG1b0pdpaskBFolswhQgQuR0im14h94PNQYoPLgwGPGXwXyxEfjI52Oh90+KTtjtelf8bMqVJwIyOYPFC/JQ+/OEjtY0dXgCNwnOPDgz9BDSX71g5+OsmtUkl9eHWbJcEefcPSD9hsj/vh/I44dDx/OBMBPmpbyDc6LJJ/PkrUw1t19AevyMygMOfJ9BdKxe90iCm75WW5E0YWuOMYCLnDU+ibzm3SrDf8Nr7b019vj98zP3NZacuylIZkb3flv0NVPyNnojeD+ZPhMofmAP2QYtcNZworf/fcL3Q//AvKggYI8CQAA">DEMO</a>
+        </section>
+        <section>
+          <h2>Layout</h2>
+          <ul>
+            <li class="fragment fade-in">Optimiser les appels</li>
+            <li class="fragment fade-in">Stocker les positions</li>
+            <li class="fragment fade-in">Pin des nodes</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Optimiser les appels</h2>
+          <a href="https://doc.linkurio.us/ogma/latest/examples/layout-force-autostop.html">Example</a>
+          <pre><code>
+            ogma.layouts.force({
+              autoStop: true
+            })
+          </code></pre>
+        </section>
+        <section>
+          <h2>Stocker les positions</h2>
+        </section>
+        <section>
+          <h2>Pin des nodes</h2>
+          <a
+            href="https://doc.linkurio.us/ogma/latest/playground/index.html#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">DEMO</a>
+        </section>
+        <section>
+          <h2>Conclusion</h2>
+        </section>
+      </section>
+
+    </div>
+  </div>
+  <script src="./index.js"></script>
+  <link type="text/css" rel="stylesheet" href="../public/styles.css" />
+</body>
+
+</html>

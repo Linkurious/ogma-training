@@ -1,35 +1,42 @@
 {
   "name": "ogma-training",
   "version": "1.0.0",
-  "description": "Ogma graph visualisation engine training files",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run build-examples",
-    "start": "serve docs",
-    "build-examples": "cd examples && ./build.sh"
+    "start": "rollup -cw",
+    "notes": "node node_modules/reveal-notes-server/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Linkurious/ogma-training.git"
   },
-  "keywords": [
-    "ogma",
-    "graph",
-    "visualisation",
-    "training",
-    "examples"
-  ],
-  "author": "Linkurious SAS",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "recursive-copy": "^2.0.13",
+    "rollup": "^2.58.0",
+    "rollup-plugin-browsersync": "^1.3.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-styles": "^3.14.1",
+    "serve": "^12.0.1"
+  },
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Linkurious/ogma-training/issues"
   },
   "homepage": "https://github.com/Linkurious/ogma-training#readme",
-  "devDependencies": {
-    "parcel": "^1.12.4",
-    "serve": "^11.3.2"
-  },
+  "workspaces": [
+    "trainings/general-presentation",
+    "trainings/multiple-transformations",
+    "trainings/large-datasets",
+    "trainings/using-geo-data",
+    "trainings/layers"
+  ],
   "dependencies": {
-    "highlight.js": "^10.2.0"
+    "reveal.js": "^4.1.3"
   }
 }
