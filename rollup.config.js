@@ -32,11 +32,6 @@ function getOptions() {
                 src: path.join(trainingsDir, folder, '/src/index.html'),
                 dest,
                 hook: 'writeBundle',
-                transform: (contents, filename) => {
-                  const match = contents.toString().match(/Comment gerer des gros Datasets.*/)
-                  console.log('content',filename, contents.toString())
-                  return contents
-                },
                 copyOnce: false
               },
               {
