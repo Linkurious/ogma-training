@@ -11,18 +11,18 @@
     <div class="slides">
       <section data-background-image="../public/background.png">
         <section>
-          <h2>Les cartes avec</h2>
+          <h2>Maps with</h2>
           <div style="margin-top: 30px; font-size: 72px;">
             <img src="images/logotype.png" id="header-logo" />Ogma
           </div>
         </section>
         <section>
-          <h2>Ogma geo mode c'est:</h2>
+          <h2>Ogma geo mode is:</h2>
           <ol>
-            <li class="fragment fade-in">Une API simple</li>
-            <li class="fragment fade-in">Basée sur leaflet</li>
-            <li class="fragment fade-in">Possibilité d'export</li>
-            <li class="fragment fade-in">Possibilité de grouper</li>
+            <li class="fragment fade-in">A simple API</li>
+            <li class="fragment fade-in">Based on leaflet</li>
+            <li class="fragment fade-in">Export feature</li>
+            <li class="fragment fade-in">Group feature</li>
           </ol>
         </section>
         <section data-background-image="../public/background.png">
@@ -46,7 +46,7 @@
           </pre>
           <aside class="notes">
             <ol>
-              <li>Utiliser n'importe quel map Providers (WMS, cartocdn, local, public...)</li>
+              <li>Use any map provider (WMS, cartocdn, local, public...)</li>
             </ol>
           </aside>  
         </section>
@@ -69,20 +69,20 @@
       </section>
       <section data-background-image="../public/background.png">
         <section>
-          <h2>Coordonées</h2>
+          <h2>Coordinates</h2>
           <ol>
-            <li class="fragment fade-in">Projection WebMercator (EPSG3857)</li>
-            <li class="fragment fade-in">Stockées par node</li>
+            <li class="fragment fade-in">WebMercator projection (EPSG3857)</li>
+            <li class="fragment fade-in">Stored by node</li>
           </ol>
           <aside class="notes">
             <ol>
               <li>Custom, non geographic, local projections possible</li>
-              <li>Nodes sans coords pas afffiches</li>
+              <li>Nodes without coods ignored</li>
             </ol>
           </aside>
         </section>
         <section>
-          <h2>Coordonées</h2>
+          <h2>Coordinates</h2>
           <pre>
             <code class="lang-javascript">
               ogma.geo.enable({
@@ -93,13 +93,13 @@
           </pre>
           <aside class="notes">
             <ol>
-              <li>Path est flexible, dot notation</li>
-              <li>Nodes sans coords pas afffiches</li>
+              <li>Path is flexible, dot notation</li>
+              <li>Nodes without coods ignored</li>
             </ol>
           </aside>
         </section>
         <section>
-          <h2>Coordonées</h2>
+          <h2>Coordinates</h2>
           <pre>
             <code class="lang-javascript">
               ogma.getNodes().get(0).setData('lat', 48.858838);
@@ -121,7 +121,7 @@
           </iframe>
           <aside class="notes">
             <ol>
-              <li>Clip ou pas clip</li>
+              <li>Clip or not clip</li>
             </ol>
           </aside>
         </section>
@@ -134,20 +134,19 @@
       </section>
       <section data-background-image="../public/background.png">
         <section>
-          <h2>Les groupes en geo mode</h2>
+          <h2>Geo groups</h2>
           <ul class=fragment fade-in">
-            <li class="fragment fade-in">Similaires aux groupes normaux</li>
-            <li class="fragment fade-in">Dépendent du zoom</li>
+            <li class="fragment fade-in">Similar to regular groups</li>
+            <li class="fragment fade-in">Depend on zoom</li>
           </ul>
           <aside class="notes">
             <ol>
-              <li>groupe par distance</li>
-              <li>Reglable</li>
+              <li>Groups by distance (tweakable)</li>
             </ol>
           </aside>
         </section>
         <section>
-          <h2>Les groupes en geo mode</h2>
+          <h2>Geo groups</h2>
           <iframe height="750" width="1200" 
           data-src="https://tinyurl.com/xyj2wazn">
           </iframe>
@@ -157,7 +156,7 @@
         <h2>Conclusion</h2>
         <aside class="notes">
           <ol>
-            <li>API simple</li>
+            <li>simple API</li>
             <li>Leaflet</li>
             <li>Flexible (data, tiles)</li>
           </ol>
