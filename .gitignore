@@ -106,3 +106,4 @@ typings/
 # TernJS port file
 .tern-port
 trainings/**/dist
+dist/
