@@ -105,4 +105,4 @@ typings/
 
 # TernJS port file
 .tern-port
-dist/
+trainings/**/dist
