@@ -1,11 +1,19 @@
 #!/bin/node
 const rimraf = require("rimraf");
-const ghpages = require('gh-pages');
+const copy = require("recursive-copy");
 
-ghpages.publish('dist', {
-  add: true,
-  branch: 'master',
-  async beforeAdd(git) {
-    return rimraf('dist')
-  }
-}, () => { console.log('published') });
+new Promise((resolve, reject) => {
+  rimraf('docs', (err) => {
+    if (err) {
+      return reject(err)
+    }
+    resolve()
+  })
+})
+.then(() =>copy('dist', 'docs'))
+.catch(function(error) {
+  console.error('Publish failed: ' + error);
+}).then(() => {
+  console.log('Publish complete. Just commit docs/ and push on master.');
+})
+  
