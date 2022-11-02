@@ -1,14 +1,15 @@
 const fs = require('fs').promises;
 const path = require('path');
+const copyDir = require('recursive-copy');
 
-export default function ({ templatePath, contentPath,folder, outPath }) {
+export default function ({ templatePath, contentFolder, outFolder }) {
   return {
     name: 'build-training',
     resolveId() { /* ... */ },
     generateBundle() {
       return Promise.all([
         fs.readFile(templatePath, { encoding: 'utf-8' }),
-        fs.readFile(contentPath, { encoding: 'utf-8' }),
+        fs.readFile(path.resolve(contentFolder, 'index.html'), { encoding: 'utf-8' }),
       ])
         .then(([template, slides]) => {
           let titleMatch = slides.match(/<p id="title">(.*)<\/p>/);
@@ -20,12 +21,26 @@ export default function ({ templatePath, contentPath,folder, outPath }) {
           return template
             .replace('{{title}}', titleMatch[1])
             .replace('{{slides}}', slides)
-            .replace('{{index.js}}', `${folder}/index.js`);
 
         })
         .then(html => {
-          return fs.mkdir(outPath, { recursive: true })
-            .then(() => fs.writeFile(path.join(outPath, 'index.html'), html))
+          return fs.mkdir(outFolder, { recursive: true, })
+            .then(() => fs.writeFile(path.join(outFolder, 'index.html'), html))
+        })
+        .then(() => {
+          return fs.readdir(path.resolve(contentFolder), { withFileTypes: true })
+            .then(content => {
+              return Promise.all(content
+                .filter(c => !c.isFile())
+                .map(c => {
+                  return copyDir(
+                  path.join(contentFolder, c.name),
+                  path.resolve(path.join(outFolder, c.name)),{
+                    overwrite: true
+                  }
+                )}))
+            })
+
         })
         .catch(e => {
           console.log("error here", e)
