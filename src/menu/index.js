@@ -36,7 +36,7 @@ function generateReport() {
     })
     .then(html => fs.writeFile(path.join(distPath, 'index.html'), html))
     .then(() => copyDir(
-      './menu/images',
+      './src/menu/images',
       path.join(distPath, 'images'),
       {overwrite: true}
       )

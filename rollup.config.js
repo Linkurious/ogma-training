@@ -6,6 +6,8 @@ import copy from 'rollup-plugin-copy'
 import fs from 'fs/promises'
 import path from 'path';
 import menu from './src/menu/index.js';
+import slides from './scripts/build.js';
+
 
 
 const trainingsDir = './src/trainings'
@@ -14,7 +16,9 @@ const dstDir = './dist'
 
 function getOptions() {
   return fs.readdir(trainingsDir)
-    .then(folders => folders.map((folder, i, folders) => {
+    .then(folders => folders
+      // .filter(folder => folder.startsWith('what-is-new'))
+      .map((folder, i, folders) => {
       const dest = path.join(dstDir, folder);
       return {
         input: path.join(trainingsDir, folder, "src/index.js"),
@@ -26,14 +30,20 @@ function getOptions() {
           noderesolve({ browser: true }),
           commonjs(),
           styles(),
+          slides({
+            templatePath: path.join('./src/template.html'),
+            folder,
+            contentPath: path.join(trainingsDir, folder, '/src/index.html'),
+            outPath: dest,
+          }),
           copy({
             targets: [
-              {
-                src: path.join(trainingsDir, folder, '/src/index.html'),
-                dest,
-                hook: 'writeBundle',
-                copyOnce: false
-              },
+              // {
+              //   src: path.join(trainingsDir, folder, '/src/index.html'),
+              //   dest,
+              //   hook: 'writeBundle',
+              //   copyOnce: false
+              // },
               {
                 src: path.join(trainingsDir, folder, '/src/styles.css'),
                 dest
