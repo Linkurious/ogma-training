@@ -5,10 +5,10 @@ import styles from "rollup-plugin-styles";
 import copy from 'rollup-plugin-copy'
 import fs from 'fs/promises'
 import path from 'path';
-import menu from './menu/index.js';
+import menu from './src/menu/index.js';
 
 
-const trainingsDir = './trainings'
+const trainingsDir = './src/trainings'
 const dstDir = './dist'
 
 
