@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const copyDir = require('recursive-copy');
 
-export default function ({ templatePath, contentFolder, outFolder }) {
+export default function ({ templatePath, PLAYGROUND_BASE,contentFolder, outFolder }) {
   return {
     name: 'build-training',
     resolveId() { /* ... */ },
@@ -17,6 +17,7 @@ export default function ({ templatePath, contentFolder, outFolder }) {
             titleMatch = ['', 'Ogma training'];
           }
           slides = slides.replace(titleMatch[0], '')
+            .replaceAll('https://doc.linkurio.us/ogma/latest/', PLAYGROUND_BASE)
             .replaceAll('<section>', '<section data-background-image="../public/background.png">');
           return template
             .replace('{{title}}', titleMatch[1])

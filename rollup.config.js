@@ -11,6 +11,10 @@ import slides from './scripts/build.js';
 const trainingsDir = './src/trainings'
 const dstDir = './dist'
 
+// const PLAYGROUND_BASE = "https://doc.linkurio.us/ogma/latest"
+const PLAYGROUND_BASE = "https://localhost:8000/dist/doc/"
+
+
 function getOptions() {
   return fs.readdir(trainingsDir)
     .then(folders => folders
@@ -29,6 +33,7 @@ function getOptions() {
             slides({
               templatePath: path.resolve('./src/template.html'),
               contentFolder: path.join(trainingsDir, folder),
+              PLAYGROUND_BASE,
               outFolder: dest,
             }),
             i === folders.length - 1
