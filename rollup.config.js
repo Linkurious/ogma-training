@@ -11,7 +11,7 @@ import slides from './scripts/build.js';
 const trainingsDir = './src/trainings'
 const dstDir = './dist'
 
-const PLAYGROUND_BASE = "https://doc.linkurio.us/ogma/latest"
+const PLAYGROUND_BASE = "https://doc.linkurio.us/ogma/latest/"
 // const PLAYGROUND_BASE = "https://localhost:8000/dist/doc/"
 
 
