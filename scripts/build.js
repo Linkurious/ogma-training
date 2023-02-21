@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const copyDir = require('recursive-copy');
 
-export default function ({ templatePath, PLAYGROUND_BASE,contentFolder, outFolder }) {
+export default function ({ templatePath, PLAYGROUND_BASE, contentFolder, outFolder }) {
   return {
     name: 'build-training',
     resolveId() { /* ... */ },
@@ -41,7 +41,6 @@ export default function ({ templatePath, PLAYGROUND_BASE,contentFolder, outFolde
                   }
                 )}))
             })
-
         })
         .catch(e => {
           console.log("error here", e)
