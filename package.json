@@ -41,6 +41,6 @@
     "trainings/layers"
   ],
   "dependencies": {
-    "reveal.js": "^4.1.3"
+    "reveal.js": "^5.0.0"
   }
 }
