@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Ogma trainings</title>
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="/public/styles.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background-image="../public/background.png">
+        <section>
+          <h2>Layers with</h2>
+          <div style="margin-top: 30px; font-size: 72px;">
+            <img src="../public/logotype.svg" id="header-logo" />
+          </div>
+        </section>
+      </section>
+      
+<section data-background-image="../public/background.png">
+  <h2>What is a Layer ?</h2>
+  <ol>
+    <li class="fragment fade-in">Canvas or DOM element</li>
+    <li class="fragment fade-in">Displayed within the viz</li>
+    <li class="fragment fade-in">Sync with the camera</li>
+  </ol>
+</section>
+<section data-background-image="../public/background.png">
+  <h2>When to use layers ? </h2>
+  <ul class=fragment fade-in">
+    <li class="fragment fade-in">Annotate the graph</li>
+    <li class="fragment fade-in">Add non native features</li>
+    <li class="fragment fade-in">Add meaning to the graph</li>
+  </ul>
+  <aside class="notes">
+    <ul>
+      <li>infos, context menu, user input</li>
+      <li>Flowlines, curved edges texts, extra badges...</li>
+      <li>Notes, mode interractive stuff...</li>
+    </ul>
+  </aside>
+</section>
+<section data-background-image="../public/background.png">
+  <h2>API</h2>
+  <pre class="javascript">
+            <code>
+              ogma.layers.addCanvasLayer(
+                (ctx) => {...},
+                index
+              )
+              ogma.layers.addLayer({
+               element: beautifulDomElement
+              })
+              ogma.layers.addOverlay({
+               element: beautifulDomElement,
+               position: {x: 0, y: 0},
+               size: {width: 100, height: 50}
+              })
+            </code>
+          </pre>
+</section>
+</section>
+<section data-background-image="../public/background.png">
+  <section data-background-image="../public/background.png">
+    <h2>Basic Layers</h2>
+    <ul class=fragment fade-in">
+      <li class="fragment fade-in">DOM element</li>
+      <li class="fragment fade-in">Do not move with the camera</li>
+
+    </ul>
+  </section>
+  <section data-background-image="../public/background.png">
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#H4sIAHBTeWEAA51VD2/aOBT/Kj52J5gGScgEQ7n2busflQna0q3b3bZOmhObYOrYmeMUUtTvfs92oJR203RCbZz3//3e7zmrhsZx0Yi+wIFpThtRgwlCl95MZ7zRbiRSaCo0iPd+Ozo/vPw0OUZG9deV2Kuf5kQxgRNCexnVGCUzrAqq968apZ52BlcN5DstZ+Ia6SqnoNJ0qf2kKECrKAdBoStOixmlGkQzRacg83wn9ayhC1IkiuUaFSoBg5nWeRH5fkLEHKy4LMmUY0W9RGY+nuOlz1lc+N9Lxrnf9V56r9zZy5jw5hDThESIQZepYroydcxwrxt2JuE/oVIDdv1hMsUvu5PxgezFycGFKvCLy7P5YM5GmGj8Vg0vTk5lf3Zx2n9HJvOLT0t+lpaL4e3gzeL9RTj4eH0w6l8PD8Yp8QfpPiRwKRMli0IqljIBMiykqDJZmi73fNfiFmaPEXJBapj+NwqFkAuH7Q9x+Pd0+T15My0nw/NZOLoNPr+UR5X4kIzTajTpH3TPDkcfLpfVx/g0CMvuZ1WlR8mYkNHi1Sg/89+fZGQxUHgYj1L8djh59SI+np58WvwCDmvSODCc8aOhwwwJ5exGeYJqX+SZa6wDQo07WnYMSV8HXjf0Ap+wQvuxkouCKv/C2B0Zs0s5BKNDKW6o0lR5cSkIp5Yd27PY82uawzGWpHLVEXaDGIGiUoXzWcfsC2aCKusLyic46/luxR4nqMPaXG65YAVvGF2811jDboqS87v27qrOiweLyrJcKo3O0wyjqZIZar42HCoVA1h9CeLmnyYHeBQamXe0jwRdWI/WytRre4mQPSMkJKFFhL64N4RW0HCEAnTX3kjWB2AQqLobBUJYa8XiUpsIK7QEZS9oo8r6r63qw9fajZLU5luhQpYqoWDbRhqrlGpwR3dfjZlLvoE7Qs2dATSvxN1z26hp0TMoelwmgOOJMWytUI4JYSI1dWmZRygMTE+IpUIq+lnKbMwypqESrUqKtoPVlxL4nwE270pOHW4KE1aCQxhskjuUDUv2EZFJmcGQvERRqOOYU/PWaoK2aaydbR7+xDS3huDg4TynghzOGCetPHzuhAnHRTEGmpvaWk2OK6q2IAGrPPSYgPMlXL+Q59sbdHR+iqyhh0w3UP7vK9sl4G0FredewW7pHTp2g7lXW8Fa/W3dgA0Gsa2VfbFQjc2pBVVCFT+n9f2d/4DYZiVg6mZJHOMy4AQTQA+ABN2P07wCpa7Esx1KOC87a+cSS61ltn7jdAoEc2e4j2abl1wWTDMJmeBbKTmQ2Yofppdwe0y5XERoxgihYl2EJ6SmbWQfnalUmasilssO3LDEOATw6+VLpNIYt4K2/Xlhz0zaGCoCQ1xTqxuA4f2/X8i9lfQHjcQ4uU6VhGsvcjWEvV57/Rd4g76pZDfgM0qYljWmM+rwghXKl08Ye0UZwy49HNvAmiIElWPwtZCvfcFbS8k1y9dwPUQB4NopHcbMJdwD3ISpKAc4tvADF0ALemYEPev3+zuM2dRS53HE6BhGbHLWtHKMvidVffctGNFwZXaD4A8b6B6TLRF8gHJwj6Bl6vKZ7umyQ5iiiZsMfJ62NQugcARXsHnWcgwtClsA7EWEihwntIMtCLXFvCw0m1a7NvSGCl49iMI0zaC3BKyoqjWPEYs5wPx0++hv9MQyf203CsqhJUoucfzWfKYaUffuP35LpEluCgAA">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Usefull for UI</li>
+        <li>Contextual menus</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Overlays</h2>
+    <ul class=fragment fade-in">
+      <li class="fragment fade-in">DOM element</li>
+      <li class="fragment fade-in">Move with the camera</li>
+    </ul>
+  </section>
+  <section data-background-image="../public/background.png">
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#H4sIANoxcWEAA51Wi3PaNhj/VzR3O5Ib2EAOyrw0a/O40CMP0qTd0qZ3kS1hRGTJleUA5fjf90myCZB019txieXv/f2+h7zwNI5yL/wCB6Y59UKPCUJn/lin3Kt7sRSaCg3k/V+OL49ubocnyLAO7sR++TQnigmcENpPqcYoHmOVU/3mziv0qNG781DguJyJB6TnGQWWpjMdxHkOXEU5EHI95zQfU6qBNFZ0BDQ/cFTfCjojeaxYplGuYhAYa53lYRDERExAisuCjDhW1I9lGuAJngWcRXnwrWCcBy1/z3/tzn7KhD8Bm8YkQgyyTBTTcxPHGHda7caw/XdbqR57+Dgc4b3W8OxQdqL48Erl+Pebi0lvwgaYaPxe9a9Oz2V3fHXe/UCGk6vbGb9Iimn/e+/d9Pqq3fv0cDjoPvQPzxIS9JI34MC5jJXMc6lYwgTQsJBinsrCZLkfuBTXMHuOkDNSwvS/UciFnDpsf4jDP+ezb/G7UTHsX47bg+/Nz3vyeC4+xmfJfDDsHrYujgYfb2bzT9F5s120Pqt5chyfETKYvh5kF8H1aUqmPYX70SDB7/vD179HJ6PT2+lP4FA1jQPDCT8rOtSQUM4elS+oDkSWusQaQNS4oWXDNOnbpt9q+82AsFwHkZLTnKrgysgdG7Eb2QehIykeqdJU+VEhCKe2O9ZrsR+UbQ7HSJK5i46wR8QIBJUonI0bZl4wE1RZXWC+0LN+4EbsuYPSrPXlhgtG8JHR6bXGGmZTFJwv69ujOsk3BpWlmVQaXSYpRiMlU1R7a3qoUAxgDSSQa38aH6CRa2Te0Rsk6NRq7CxMvDaXENkzQkISmofoi3tDaAEJh6hZRwRrDFJIS8k1y0J0fysLhfajA2SmG/I5QGOq6D1aomV9pV4doN3ATmvFQD80yA6cPbayt6aEtVYsKrSJcYFmYLEDsc0hQrSspMrD11KNksRmtEA52I+pzUZjlVAN6mj51Yg5H6uChqi2VeLanVjuWigNiL6pk89lDJU6NYI7C5RhQphIXEqQTrsJMdURS4RU9LOU6RlLmYZItCooWjdWrj3QvwD0PxScusooTFgBCu3myrmrYwZFJDIuUmgCP1YUojjh1Lzt1LKakcx8JiDqG0ASZO/fCXQJDc/x3EfGBxj9dWF9AwqWsLPr5+w7XaITB9cT2xIq9n0ZMliiyoZc2nURUxdFiDKLZyZzppkUoe28dV9w3Gnax7CU2dm1KsYLQDhlRENT1lrNZjar1aETWDIGu3deBwh3HtR4ubs9MQsvLhSsl/IVrjkmriGk2Ng/B89eOMI8p3Uvr6ggqmCOFh5MDb0o0ogqL9zrmhHjRSq88I9l3avS+G+55detYGDWJedndAQOmnVvxFS+ynbbVOvJUgs8bsiWeysDK8AyHWlHADj5yhclTEsFV4Bl+iPJTS9WXo5kYbaFiTdT8pER49IuFCCDzS3tqVSkD3hzg7kRtagtl+vb6Omq3thHZpNBHc1uc7OfwqAxaIAmNCU0RDUj5hVqeCdebc2Z07ID5FQiqbVMqzcOaFZnuEZMS5SWV60GnziApKaWvOleQq+OuJyGaMwIJF8F4QupaR3ZR2MkVeqiiOSsARcjMQpN+HWyGVJJhHeadfvz2x0za0ZQAaSNal5b0KJr/37C95rTHyQS4fghUVBH2KI2hnanU6/+mn6vayLZNvjKFdYZrkYI9lI2e0HYz4sIFtRm2XpWFCGIHIOuhbzSBe1yd1dwbaIAcG2FDmXmEparbaw55QDHGn6gAmhBzoygV91ud6tjVrGUflxjNExHrHyWbeXW01NTlbdQuVRgp/xmDT1hskaC74YM1ENImTp/Jns6axCm3M4AGMq4S84UWjiEm9M8SzqGFIUNwK7DPMMxbWALQikxKXLNRvNtGfpIBZ9vWGGappBbDFJUlZzniEUcYH45ffQXeuHTAtaVW4OU3ODovfm6MMvnXzWmPlElDAAA">
+    </iframe>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Canvas Layer</h2>
+    <ul class=fragment fade-in">
+      <li class="fragment fade-in">Create a canvas</li>
+      <li class="fragment fade-in">Move with the camera</li>
+    </ul>
+  </section>
+  <section data-background-image="../public/background.png">
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+  </section>
+</section>
+<section data-background-image="../public/background.png">
+  <section data-background-image="../public/background.png">
+    <h2>Annotate the graph</h2>
+    <iframe height="750" width="1200" data-src="https://tinyurl.com/4jeytpsw">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Context menu</li>
+        <li>Show more informations </li>
+        <li>Interractive</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Annotate the graph</h2>
+    <iframe height="750" width="1200" data-src="https://tinyurl.com/2xmhb976">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Make the reading more easy</li>
+        <li>Add more meaning to the graph</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Non native features</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>More flexible</li>
+        <li>Beware performances</li>
+        <li>Requires a good understanding of Ogma</li>
+        <li>Not ideal: animations</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Non native features</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Better text rendering</li>
+        <li>Beware perfs</li>
+        <li>Same problem with animations</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Add meaning</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Use layer rather than shapes and colors</li>
+        <li>Show how to add images/videos</li>
+        <li>Adds meaning by spliting the network layers</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Add meaning</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Forms: user input</li>
+        <li>Interractive</li>
+        <li>Can be serialized</li>
+      </ul>
+    </aside>
+  </section>
+</section>
+<section data-background-image="../public/background.png">
+  <section data-background-image="../public/background.png">
+    <h2>D3 integration</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#H4sIAJ5weWEAA51X727bNhB/FU75YKewJcuWHdlLi3RJsRXo2qINNgxJPtAiZbOVSIOkHHuGH2APshfbk+xIirbsuO1WIIh4xx/vjveP502g8VQFkztYMF3QYBIwTugqnOuyCDpBJrimXAP78oebd9e3f7x/hczWi3t+WX8RupxTTOwK1iXVGGVzLBXVz++DSufd9D5Akd8vGP+M9HpBYVPTlY4ypWBf0gIYSq8LquaUamDNJc2BF0aOG1qgF6MyyRYaKZkBZK71Qk2iKCM8/KQILdhShpzqiC/KiAyuLsI4jCPClAYqLJlBgajLyEn5/zI/C77EV2nYD/tufULgZVS7xRJTQdZeD2FLxAjomEm8mHeNjzHjVFoJsHnSnjBygTmlqBYOGl1IIHBLRh8/aqwhorwqim3nOMCf1EF4WbkQUqN3sxKjXIoSta5MpCrJRKUiAezWj+YqcEJpZGj0HHH6aE+0N8aO3T0mqHV0s1bHACxzgiwYIS4IVRN0twFfwIlKtdC2g2qK0CaVS6AerAyEKJnZc45CgFGikhl1MjpIYzmjeifjBAw2GjAr/BQMNhowa59DPZiPOyIWmoFHdpdi4E+Js0MmQn8KUQKJSrz6DRcVSG+fo+cv0GueM8702ku2H/i3PbfOjqJ7blwd1hWACflQFdS52/jvpdaSTSttHFIrk5iwCshxfaVMFMJE5Kw3HF6M4tbeduPIEwIeGdEQpV6YHhrjIm/FKYi99X/rbJziaTZ08W2dpTgd45GnLqajNE09NZom6WjqKdwbkuEOSXoXySDzVJ6nWa8Hlj40FBMMfaVWu0EFntICbnUJqtHSubR/0UtGw3F9uz1m2I0He1SSjMfpuPcEFSfd+KIhLB4CLn4KS7v9ZA8bpMPBRZo+gfWH3aQBi5O4Nxomgye4ZNgdNXBpGo8HSf8J7J+//h41bjqK+8kIhHkP2Rwp8FpUWoW5gPRtw1mRQflPkJYVRdvzUM8pb7u08+UKbl0wCl4lAxf7EMj2eb1W0BDapnl4htXeJkYCcYTLDC8Ly8xkhpFhonW46fIStuMh8BtHmuqB3KmHy1D5wZ5q14e7XsozSM/YAxmHDvMV4ODQEOvTl9+vt/9f9fa93ujZM3uk/o+uFljiEm2uMbwc6gOFfiwZn12bZrzS/ZstyvTqCMurckrlFn2Jv3Z8aBgI5RW3HQgeVSP6RvBKX8OLrNsgt4Pgb33uqx04ocJLiLqNimNoibkqIHvaFut3XB1K/Oi8B04L7QOysoI9zGSBScJXOJu326SD2D7nvIIpnTH+Huv5Ti3ygttkzzLQnBXFR9P+QKNrPnfMZP0hYienblZfVnRgHhDNeystxWfqtZlGlJtXz2/Dg0h/N90RNiH/nhy0OvbMHHxjxMSLFfqZCjljuINuWUlVBymI+IFs48WXBZtxcyKDNxkezaPtn7CCKYRb00pGSEGbiKafdpYfB+7NPvd9GXwzhLbe99Gzsu5MXjyYCmoIDY3ZUjByKoS3RgUJTV+ATgUH6jxshs3jJVVaSJ+S0OXsS1v3OCrtO+hq542hjeUNGw3Qaw/h7X5r5gxf3Y71XihmCqTB3SXsxtoFBhmRXymg2jjzqXPunmuxCOvRyHwOx7BNkFUSempNwsTN+EdaUFuqv4KRwSTHhaKdAMLsuACVMJxtAhP2t7bSg0lsxraiKjkst51gUd/lqzAYng5NgfFRFMUbmoP4XifImVQ7r3xD4QH2hhYa34oFSIEtk0p2nDDjz04XJQzCafMMNsHTBYFu57Vci8oMoHGcwF2kWDJweD2kAh+EHh1/FJL8wmZzqJU5FEnttO22OeHufzAczLhnR1OpyxgIGkw7NppTobUZ1BxVgHf8WhptnvAunyD47QSe0dSySxgVGTAdSCypzAvxOEFzqFXKTZ6cnMwhNC7glNzi6WsznBtH/wurtadmmg0AAA==">
+    </iframe>
+    <aside class="notes">
+      <ul>
+        <li>Can send custom examples</li>
+        <li>Helpscout and playgrounds</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Kanva.js integration</h2>
+    <iframe height="750" width="1200"
+      data-src="https://doc.linkurio.us/ogma/latest/editor/embed.html#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">
+    </iframe>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Conclusion</h2>
+    <aside class="notes">
+      <ol>
+        <li>Infinite possibilities, abstract, no bother with sync camera</li>
+        <li>Fixes custom rendering issues</li>
+        <li>beware the perfs</li>
+      </ol>
+    </aside>
+  </section>
+  <section data-background-image="../public/background.png">
+    <h2>Questions ?</h2>
+  </section>
+
+    </div>
+  </div>
+  <script src="../index.js"></script>
+</body>
+
+</html>
