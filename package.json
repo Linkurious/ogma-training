@@ -7,7 +7,7 @@
     "start": "rollup -cw",
     "build": "rollup -c",
     "notes": "node node_modules/reveal-notes-server/index",
-    "publish": "npm run build && node ./scripts/publish.js",
+    "publish": "npm run build && node ./scripts/publish.js && gh-pages -t --nojekyll -d docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,7 @@
     "@rollup/plugin-commonjs": "25.0.0",
     "@rollup/plugin-json": "5.0.0",
     "@rollup/plugin-node-resolve": "15.0.0",
-    "gh-pages": "6.0.0",
+    "gh-pages": "^6.2.0",
     "recursive-copy": "2.0.13",
     "rimraf": "5.0.0",
     "rollup": "2.78.0",
