@@ -7,7 +7,7 @@
     "start": "rollup -cw",
     "build": "rollup -c",
     "notes": "node node_modules/reveal-notes-server/index",
-    "publish": "npm run build && ./scripts/publish.js",
+    "publish": "npm run build && node ./scripts/publish.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,17 +15,17 @@
     "url": "git+https://github.com/Linkurious/ogma-training.git"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.0",
-    "@rollup/plugin-json": "^5.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
-    "gh-pages": "^6.0.0",
-    "recursive-copy": "^2.0.13",
-    "rimraf": "^5.0.0",
-    "rollup": "^4.0.0",
-    "rollup-plugin-browsersync": "^1.3.3",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-styles": "^4.0.0",
-    "serve": "^14.0.0"
+    "@rollup/plugin-commonjs": "25.0.0",
+    "@rollup/plugin-json": "5.0.0",
+    "@rollup/plugin-node-resolve": "15.0.0",
+    "gh-pages": "6.0.0",
+    "recursive-copy": "2.0.13",
+    "rimraf": "5.0.0",
+    "rollup": "2.78.0",
+    "rollup-plugin-browsersync": "1.3.3",
+    "rollup-plugin-copy": "3.4.0",
+    "rollup-plugin-styles": "4.0.0",
+    "serve": "14.0.0"
   },
   "author": "",
   "license": "ISC",
